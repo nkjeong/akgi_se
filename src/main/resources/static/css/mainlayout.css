@@ -20,7 +20,6 @@ body{
 
 .header{
 	height:80px;
-	border-bottom:1px solid var(--base-line-color);
 	display:flex;
 	justify-content: center;
 	align-items:center;
@@ -77,16 +76,45 @@ body{
 	color:var(--base-font-over-color);
 	text-decoration: underline;
 }
+.navigation{
+	background-color:var(--base-box-line-color);
+	height:50px;
+}
+.navigation > nav{
+	width:1200px;
+	height:100%;
+	margin:0 auto;
+}
+.navigation > nav > ul{
+	list-style: none;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin:0;
+	padding:0;
+	color:var(--base-background-color);
+	height:100%;
+}
+.navigation > nav > ul > li{
+	height:100%;
+	display: flex;
+	align-items: center;
+	cursor:pointer;
+}
 
+.navigation > nav > ul > li:hover{
+	color:var(--base-font-over-color);
+	text-decoration: underline;
+}
 .main{
 	flex:1;
 }
 .footer{
 	display:flex;
 	justify-content: center;
-	height:250px;
 	border-top:1px solid var(--base-line-color);
-	padding-top:20px;
+	padding-top:30px;
+	padding-bottom:30px;
 }
 
 .footer-logo > section{
@@ -95,6 +123,15 @@ body{
 
 section.footer > section:not(:first-child) > section:first-child{
 	border-bottom:1px solid var(--base-line-color);
+	font-weight:700;
+	padding-left:10px;
+	font-size:1.0rem;
+}
+section.footer > section:not(:first-child) > section:last-child{
+	padding-top:10px;
+	padding-left:20px;
+	padding-right:10px;
+	font-size:0.8rem;
 }
 section.footer > section:not(:last-child){
 	margin-right:20px;
