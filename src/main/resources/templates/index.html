@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link rel="stylesheet" href="/tripleSlider/demo-static/triple-slider.css">
+    <link rel="stylesheet" href="/tripleSlider/demo-static/main.css">
     <link rel="stylesheet" href="/css/variable.css">
     <link rel="stylesheet" href="/css/mainlayout.css">
     <title>대광악사 :: GRANSEN</title>
@@ -28,23 +31,100 @@
     <section class="navigation">
     	<nav>
     		<ul>
-    			<li>메뉴</li>
-    			<li>메뉴</li>
-    			<li>메뉴</li>
-    			<li>메뉴</li>
-    			<li>메뉴</li>
-    			<li>메뉴</li>
-    			<li>메뉴</li>
-    			<li>메뉴</li>
-    			<li>메뉴</li>
-    			<li>메뉴</li>
-    			<li>메뉴</li>
-    			<li>메뉴</li>
+    			<li>
+    				<article>메뉴</article>
+    				<article class="sub-menu">
+    					<ul>
+    						<li>서브메뉴</li>
+    						<li>서브메뉴</li>
+    						<li>서브메뉴</li>
+    					</ul>
+    				</article>
+				</li>
+				<li>
+    				<article>메뉴</article>
+    				<article class="sub-menu">
+    					<ul>
+    						<li>서브메뉴</li>
+    						<li>서브메뉴</li>
+    						<li>서브메뉴</li>
+    					</ul>
+    				</article>
+				</li>
+				<li>
+    				<article>메뉴</article>
+    				<article class="sub-menu">
+    					<ul>
+    						<li>서브메뉴</li>
+    						<li>서브메뉴</li>
+    						<li>서브메뉴</li>
+    					</ul>
+    				</article>
+				</li>
+				<li>
+    				<article>메뉴</article>
+    				<article class="sub-menu">
+    					<ul>
+    						<li>서브메뉴</li>
+    						<li>서브메뉴</li>
+    						<li>서브메뉴</li>
+    					</ul>
+    				</article>
+				</li>
     		</ul>
     	</nav>
     </section>
     <section class="main">
-    
+    	
+    	<section class="main-layout-block-full main-top">
+    		<section class="main-top-left" title="소리를 키우세요~">
+				<video width="250" controls autoplay muted>
+				  <source src="/images/movie_01.mp4" type="video/mp4" />
+				</video>
+    		</section>
+    		<section class="main-top-right">
+				  <div id="app">
+				    <!-- Triple slider -->
+				    <div class="triple-slider">
+				      <!-- Duplicate swipers will be created automatically -->
+				
+				      <!-- Main center swiper -->
+				      <div class="swiper">
+				        <div class="swiper-wrapper">
+				          <div class="swiper-slide">
+				            <img class="bg-image" src="/tripleSlider/assets/images/cello.jpg" alt="">
+				            <img class="logo-image logo-image-1" data-swiper-parallax-x="50%"
+				              src="/tripleSlider/assets/images/cello_banner.png" alt="">
+				          </div>
+				          <div class="swiper-slide">
+				            <img class="bg-image" src="/tripleSlider/assets/images/kalimba.jpg" alt="">
+				            <img class="logo-image logo-image-2" data-swiper-parallax-x="50%" src="/tripleSlider/assets/images/kalimba_banner.png"
+				              alt="">
+				          </div>
+				          <div class="swiper-slide">
+				            <img class="bg-image" src="/tripleSlider/assets/images/ukulele.jpg" alt="">
+				            <img class="logo-image logo-image-3" data-swiper-parallax-x="50%" src="/tripleSlider/assets/images/ukulele_banner.png" alt="">
+				          </div>
+				          <div class="swiper-slide">
+				            <img class="bg-image" src="/tripleSlider/assets/images/flute.jpg" alt="">
+				            <img class="logo-image logo-image-4" data-swiper-parallax-x="50%" src="/tripleSlider/assets/images/flute_banner.png"
+				              alt="">
+				          </div>
+				          <div class="swiper-slide">
+				            <img class="bg-image" src="/tripleSlider/assets/images/violin.jpg" alt="">
+				            <img class="logo-image logo-image-5" data-swiper-parallax-x="50%" src="/tripleSlider/assets/images/violin_banner.png"
+				              alt="">
+				          </div>
+				        </div>
+				      </div>
+				    </div>
+				  </div>
+    		</section>
+    	</section>
+    	<section class="main-layout-block-1200">
+    		<section>카테고리 상품</section>
+    		<section></section>
+    	</section>
     </section>
     <section class="footer">
     	<section class="footer-logo">
@@ -109,5 +189,8 @@
     </section>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="/tripleSlider/demo-static/triple-slider.js"></script>
+    <script src="/tripleSlider/demo-static/main.js"></script>
 </body>
 </html>
