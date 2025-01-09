@@ -11,7 +11,7 @@ const setGransenInfo = async (url, cls) => {
         let html;
         if(cls == 'setTodate'){
 			html = `
-	        	${data.year}년 ${data.month}월 ${data.date}일 ${data.toDay}
+	        	1997 - ${data.year}
 	        `;
 		}else{
 			html = `
