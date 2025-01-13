@@ -9,9 +9,13 @@ const setGransenInfo = async (url, cls) => {
         }
         const data = await response.json();
         let html;
-        if(cls == 'setTodate'){
+        if(cls == 'since'){
 			html = `
 	        	1997 - ${data.year}
+	        `;
+		}if(cls == 'setTodate'){
+			html = `
+	        	${data.year} / ${data.month} / ${data.date} / ${data.toDay}
 	        `;
 		}else{
 			html = `
@@ -24,6 +28,7 @@ const setGransenInfo = async (url, cls) => {
     }
 }
 if(window.location.pathname === '/') {
+	setGransenInfo('/calendar', 'since');
 	setGransenInfo('/calendar', 'setTodate');
 	setGransenInfo('/api/gallery/count', 'setItemLength');
 }

@@ -8,16 +8,16 @@ const fetchJSON = async (url) => {
 };
 
 const setCategory = (categories) => {
-    const mainNavigationElement = document.querySelector('section.mainNav ul');
+    const mainNavigationElement = document.querySelector('section.navigation ul');
     const categoryNumbers = categories.map(category => ({
         "code": category.code, 
         "name": category.name
     }));
-    setCategoryNumber(categoryNumbers);//카테고리 상품 진열
+    //setCategoryNumber(categoryNumbers);//카테고리 상품 진열
     const html = categories.map(category => `
         <li>
             <article>${category.name}</article>
-            <article class="subMenu" data-code="${category.code}">
+            <article class="sub-menu" data-code="${category.code}">
                 <ul></ul>
             </article>
         </li>
@@ -27,7 +27,7 @@ const setCategory = (categories) => {
 };
 
 const setSubMenus = (element) => {
-    const subMenuElements = element.querySelectorAll('article.subMenu');
+    const subMenuElements = element.querySelectorAll('article.sub-menu');
     subMenuElements.forEach(subMenuElement => {
         updateSubMenu(subMenuElement.dataset.code, subMenuElement);
     });
@@ -64,11 +64,46 @@ const getSubItems = (ele) => {
         console.error('Fetch error:', error);
     }
 })();
-function getRandomNumber(min, max) {
+
+
+/*function getRandomNumber(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 document.querySelector('.categoryBtn').addEventListener('click', function() {
     const mainNav = document.querySelector('.mainNav');
     mainNav.classList.toggle('open');
-});
+});*/
+
+
+const getCategoryItem = async (url, name, setMode) => {
+    let listTitle;
+	let setBlockEle = '';
+	if(setMode === 'subCategory'){
+		listTitle = document.querySelector('.main-block-title');
+		setBlockEle = document.querySelector('.category-items-list');
+	}
+    try {
+		if(listTitle){
+	        const response = await fetch(url);
+	        if (!response.ok) {
+	            throw new Error('Network response was not ok');
+	        }
+	        const data = await response.json();
+			listTitle.innerHTML = `<b>${name} 카테고리 상품 (${data.length}개)</b>`;
+			
+			setHTMLdata(data, setBlockEle);
+        }
+    } catch (error) {
+        console.error('There was a problem with the fetch operation:', error.message);
+    }
+}
+
+
+const setHTMLdata = (data, ele) => {
+	let setHTML = '';
+	data.forEach((d) => {
+		console.log(d);
+	});
+	ele.innerHTML = setHTML;
+}

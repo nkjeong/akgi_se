@@ -32,7 +32,14 @@ body{
 }
 .header > section .logo{
 	width:20%;
+	display: flex;
+    align-items: center;
 }
+
+.header > section .logo .setTodate{
+	margin-left:20px;
+}
+
 .footer > section > section img,
 .header > section .logo img{
 	cursor:pointer;
@@ -117,13 +124,29 @@ body{
 	z-index: 500;
 	background-color: var(--base-box-line-color);
     width: max-content;
-    padding: 10px;
     top: 40px;
     box-shadow: 10px 10px 10px rgba(0,0,0,0.2);
     border-radius: 10px;
     left: 50%;
     transform: translateX(-50%) translateY(20px);
     transition: visibility 0.2s, opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.navigation article.sub-menu ul li{
+	cursor:pointer;
+	padding: 10px 20px;
+}
+
+.navigation article.sub-menu ul li:not(:last-child){
+	border-bottom:1px solid #000000;
+}
+.navigation article.sub-menu ul li:last-child{
+	border-radius: 0 0 10px 10px;
+}
+
+.navigation article.sub-menu ul li:hover{
+	color:var(--base-font-over-color);
+	background-color:#000000;
 }
 
 .navigation > nav > ul > li:hover article.sub-menu{
@@ -144,11 +167,21 @@ body{
 }
 
 .main-top{
-	background-color:#000000;
 	height:500px;
 	display:flex;
 	justify-content: center;
 	align-items: center;
+	position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0,0,0,0.4);
+}
+
+.circle {
+      position: absolute;
+      background-color: #000000;
+      border-radius: 50%; /* 원 모양으로 만들기 */
+      opacity:0.1;
+      z-index: -1;
 }
 
 .main-layout-block-1200{
@@ -168,6 +201,9 @@ body{
 
 .main-layout-block-full.main-top > .main-top-right{
 	width:950px;
+}
+
+.main-block-title{
 }
 
 .footer{

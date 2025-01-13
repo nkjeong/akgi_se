@@ -16,6 +16,7 @@
     	<section>
     		<section class="logo">
     			<img src="/images/logo_02.png" title="홈" onclick="location.href='/'">
+    			<span class="setTodate"></span>
     		</section>
     		<section class="search">
     			<form name="searchForm" class="searchForm">
@@ -31,46 +32,7 @@
     <section class="navigation">
     	<nav>
     		<ul>
-    			<li>
-    				<article>메뉴</article>
-    				<article class="sub-menu">
-    					<ul>
-    						<li>서브메뉴</li>
-    						<li>서브메뉴</li>
-    						<li>서브메뉴</li>
-    					</ul>
-    				</article>
-				</li>
-				<li>
-    				<article>메뉴</article>
-    				<article class="sub-menu">
-    					<ul>
-    						<li>서브메뉴</li>
-    						<li>서브메뉴</li>
-    						<li>서브메뉴</li>
-    					</ul>
-    				</article>
-				</li>
-				<li>
-    				<article>메뉴</article>
-    				<article class="sub-menu">
-    					<ul>
-    						<li>서브메뉴</li>
-    						<li>서브메뉴</li>
-    						<li>서브메뉴</li>
-    					</ul>
-    				</article>
-				</li>
-				<li>
-    				<article>메뉴</article>
-    				<article class="sub-menu">
-    					<ul>
-    						<li>서브메뉴</li>
-    						<li>서브메뉴</li>
-    						<li>서브메뉴</li>
-    					</ul>
-    				</article>
-				</li>
+				<!-- setCategory fn => html code -->
     		</ul>
     	</nav>
     </section>
@@ -78,7 +40,7 @@
     	
     	<section class="main-layout-block-full main-top">
     		<section class="main-top-left" title="소리를 키우세요~">
-				<video width="250" controls autoplay muted>
+				<video width="250" controls autoplay muted style="border-radius:15px;">
 				  <source src="/images/movie_01.mp4" type="video/mp4" />
 				</video>
     		</section>
@@ -122,8 +84,8 @@
     		</section>
     	</section>
     	<section class="main-layout-block-1200">
-    		<section>카테고리 상품 [<span class="setItemLength"></span>]</section>
-    		<section></section>
+    		<section>[<span class="setItemLength"></span>] 중 <span class="main-block-title"></span></section>
+    		<section class="category-items-list"></section>
     	</section>
     </section>
     <section class="footer">
@@ -131,7 +93,7 @@
     		<section>
     			<img src="/images/logo_02.png" title="홈" onclick="location.href='/'">
     		</section>
-    		<section class="setTodate">
+    		<section class="since">
     			1997 - 2025
     		</section>
     	</section>
@@ -193,5 +155,50 @@
     <script src="/tripleSlider/demo-static/triple-slider.js"></script>
     <script src="/tripleSlider/demo-static/main.js"></script>
     <script src="/js/calendar.js"></script>
+    <script src="/js/index.js"></script>
+  <script>
+    const container = document.querySelector('.main-layout-block-full');
+    const containerWidth = container.offsetWidth;
+    const containerHeight = container.offsetHeight;
+
+    // 색상 배열 생성
+    const colors = [
+      '#FF5733', '#33FF57', '#5733FF', '#FFC300', '#C70039', 
+      '#900C3F', '#581845', '#DAF7A6', '#FFC0CB', '#800080',
+      '#FFD700', '#00FFFF', '#FF00FF', '#008080', '#000080',
+      '#808000', '#800000', '#FF4500', '#2E8B57', '#7FFF00',
+      '#8A2BE2', '#5F9EA0', '#DC143C', '#6495ED', '#D2691E',
+      '#FF1493', '#48D1CC', '#00CED1', '#20B2AA', '#778899',
+      '#6A5ACD', '#FF6347', '#2F4F4F', '#7B68EE', '#B22222',
+      '#FF8C00', '#E9967A', '#006400', '#708090', '#FF69B4',
+      '#00FF7F', '#4682B4', '#D2B48C', '#A0522D', '#8B0000',
+      '#BDB76B', '#556B2F', '#FFDAB9', '#9370DB', '#FFB6C1'
+    ];
+
+    const createRandomCircle = () => {
+      const circle = document.createElement('div');
+      const size = Math.random() * 50 + 10; // 크기: 10px ~ 60px
+      const x = Math.random() * (containerWidth - size);
+      const y = Math.random() * (containerHeight - size);
+
+      // 무작위 색상 선택
+      const randomColor = colors[Math.floor(Math.random() * colors.length)];
+
+      circle.classList.add('circle');
+      circle.style.width = `${size}px`;
+      circle.style.height = `${size}px`;
+      circle.style.left = `${x}px`;
+      circle.style.top = `${y}px`;
+      circle.style.backgroundColor = randomColor; // 배경색 지정
+
+      return circle;
+    };
+
+    for (let i = 0; i < 50; i++) {
+      const circle = createRandomCircle();
+      const firstChild = container.firstChild; // 현재 container의 첫 번째 자식 요소
+      container.insertBefore(circle, firstChild); // 첫 번째 자식 앞에 circle 삽입
+    }
+  </script>
 </body>
 </html>
