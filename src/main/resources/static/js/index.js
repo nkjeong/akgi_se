@@ -103,10 +103,11 @@ const getCategoryItem = async (url, name, setMode) => {
 const setHTMLdata = (data, ele) => {
 	let setHTML = '';
 	data.forEach((d) => {
-		let reName = d.name.length > 14 ? d.name.substring(0, 13)+'...' : d.name
+		let reName = d.name.length > 14 ? d.name.substring(0, 13)+'...' : d.name;
+		let itemString = JSON.stringify(d).replace(/"/g, '&quot;');
 		setHTML += `
 		<section>
-			<section class="item-img">
+			<section class="item-img" data-item="${itemString}">
 				<img src="http://akgi.co.kr/images/1000/gransen_${d.code}.jpg" class="d-img">
 				<section class="in-logo"><img src="/images/logo_02.png"></section>
 			</section>
