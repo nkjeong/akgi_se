@@ -26,6 +26,7 @@ body{
 }
 
 .header > section{
+	height:80px;
 	display:flex;
 	width:1200px;
 	margin:0 auto;
@@ -206,6 +207,57 @@ body{
 .main-block-title{
 }
 
+.category-items-list{
+	display:flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+.category-items-list > section{
+	width:230px;
+	height:300px;
+	border:1px solid #dcdcdc;
+	margin:10px 0;
+	border-radius:10px;
+	display:flex;
+	flex-direction:column;
+	justify-content:flex-start;
+	align-items:center;
+}
+
+.category-items-list > section .item-img{
+	width:210px;
+	height:210px;
+	border-radius:10px;
+	margin: 10px 0;
+	position: relative;
+	cursor:pointer;
+}
+
+.category-items-list > section .item-img img{
+	width:100%;
+	border-radius:10px;
+}
+.category-items-list > section .item-img > .in-logo{
+	position: absolute;
+	top:10px;
+	left:10px;
+	width:25px;
+}
+.category-items-list > section .item-img > .in-logo img{
+	width:100%;
+}
+
+.category-items-list > section .item-info{
+	border-top:1px solid #dcdcdc;
+	width:210px;
+	display:flex;
+	flex-direction:column;
+	justify-content:center;
+	align-items:center;
+	padding:5px 0;
+}
+
 .footer{
 	display:flex;
 	justify-content: center;
@@ -232,10 +284,4 @@ section.footer > section:not(:first-child) > section:last-child{
 }
 section.footer > section:not(:last-child){
 	margin-right:20px;
-}
-
-img{
-	all:unset;
-	width:auto;
-	height:auto;
 }

@@ -81,7 +81,7 @@ const getCategoryItem = async (url, name, setMode) => {
 	let setBlockEle = '';
 	if(setMode === 'subCategory'){
 		listTitle = document.querySelector('.main-block-title');
-		setBlockEle = document.querySelector('.category-items-list');
+		setBlockEle = document.querySelector('.item-list');
 	}
     try {
 		if(listTitle){
@@ -90,7 +90,7 @@ const getCategoryItem = async (url, name, setMode) => {
 	            throw new Error('Network response was not ok');
 	        }
 	        const data = await response.json();
-			listTitle.innerHTML = `<b>${name} 카테고리 상품 (${data.length}개)</b>`;
+			listTitle.innerHTML = `중 <b>${name} 카테고리 상품 (${data.length}개)</b>`;
 			
 			setHTMLdata(data, setBlockEle);
         }
@@ -103,7 +103,26 @@ const getCategoryItem = async (url, name, setMode) => {
 const setHTMLdata = (data, ele) => {
 	let setHTML = '';
 	data.forEach((d) => {
-		console.log(d);
+		let reName = d.name.length > 14 ? d.name.substring(0, 13)+'...' : d.name
+		setHTML += `
+		<section>
+			<section class="item-img">
+				<img src="http://akgi.co.kr/images/1000/gransen_${d.code}.jpg" class="d-img">
+				<section class="in-logo"><img src="/images/logo_02.png"></section>
+			</section>
+			<section class="item-info">
+				<article>${reName}</article>
+				<article>${getCurrentMony(d.price)}</article>
+			</section>
+		</section>
+		`;
 	});
 	ele.innerHTML = setHTML;
+	
+	VanillaTilt.init(ele.querySelectorAll(".item-img"), {
+	    max: 25,
+	    speed: 400,
+	    glare: true,
+	    "max-glare":1,
+	});
 }
