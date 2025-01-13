@@ -1,4 +1,5 @@
 "use strict";
+const rootURL = 'http://akgi.co.kr';
 const fetchJSON = async (url) => {
     const response = await fetch(url);
     if (!response.ok) {
@@ -13,7 +14,7 @@ const setCategory = (categories) => {
         "code": category.code, 
         "name": category.name
     }));
-    //setCategoryNumber(categoryNumbers);//카테고리 상품 진열
+    setCategoryNumber(categoryNumbers);//카테고리 상품 진열
     const html = categories.map(category => `
         <li>
             <article>${category.name}</article>
@@ -45,6 +46,7 @@ const updateSubMenu = async (categoryCode, subMenuElement) => {
     getSubmenus.forEach((btns)=>{
 		btns.addEventListener('click', (btn)=>{
 			getSubItems(btn.target);
+			location.href='#categoryItemList';
 		});
 	});
 }
@@ -66,10 +68,18 @@ const getSubItems = (ele) => {
 })();
 
 
-/*function getRandomNumber(min, max) {
+const setCategoryNumber = (categoryNumbers) => {
+    const number = getRandomNumber(1, categoryNumbers.length);
+	console.log(number)
+    const { code, name } = categoryNumbers[number - 1];
+    getCategoryItem(`/api/gallery/category/${code}`, name, 'categoryRandom');
+}
+
+function getRandomNumber(min, max) { //카테고리 코드 랜덤 얻기
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+/*
 document.querySelector('.categoryBtn').addEventListener('click', function() {
     const mainNav = document.querySelector('.mainNav');
     mainNav.classList.toggle('open');
@@ -77,48 +87,64 @@ document.querySelector('.categoryBtn').addEventListener('click', function() {
 
 
 const getCategoryItem = async (url, name, setMode) => {
+	
     let listTitle;
 	let setBlockEle = '';
+	let limited = 0;
 	if(setMode === 'subCategory'){
-		listTitle = document.querySelector('.main-block-title');
-		setBlockEle = document.querySelector('.item-list');
+		listTitle = document.querySelector('section.cate>section>.main-block-title');
+		setBlockEle = document.querySelector('section.cate>.item-list');
+	}else if(setMode === 'categoryRandom'){
+		listTitle = document.querySelector('section.random>section>.main-block-title');
+		setBlockEle = document.querySelector('section.random>.item-list');
+		limited = 5;
 	}
     try {
 		if(listTitle){
+			
 	        const response = await fetch(url);
 	        if (!response.ok) {
 	            throw new Error('Network response was not ok');
 	        }
 	        const data = await response.json();
-			listTitle.innerHTML = `중 <b>${name} 카테고리 상품 (${data.length}개)</b>`;
-			
-			setHTMLdata(data, setBlockEle);
+			listTitle.innerHTML = `<b>${name} 카테고리 상품 (${data.length}개)</b>`;
+			if(limited === 0)limited = data.length;
+			setHTMLdata(data, setBlockEle, limited);
         }
     } catch (error) {
         console.error('There was a problem with the fetch operation:', error.message);
     }
 }
 
-
-const setHTMLdata = (data, ele) => {
-	let setHTML = '';
-	data.forEach((d) => {
-		let reName = d.name.length > 14 ? d.name.substring(0, 13)+'...' : d.name;
-		let itemString = JSON.stringify(d).replace(/"/g, '&quot;');
-		setHTML += `
-		<section>
+const createItemHTML = (item) => {
+    let itemName = item.name.length > 14 ? item.name.substring(0, 13) + '...' : item.name;
+    let code = item.code;
+    let itemString = JSON.stringify(item).replace(/"/g, '&quot;');
+    return `
+		<section data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="${item.name}">
 			<section class="item-img" data-item="${itemString}">
-				<img src="http://akgi.co.kr/images/1000/gransen_${d.code}.jpg" class="d-img">
+				<img src="${rootURL}/images/1000/gransen_${item.code}.jpg" class="d-img">
 				<section class="in-logo"><img src="/images/logo_02.png"></section>
 			</section>
 			<section class="item-info">
-				<article>${reName}</article>
-				<article>${getCurrentMony(d.price)}</article>
+				<article>${itemName}</article>
+				<article>${getCurrentMony(item.price)}</article>
 			</section>
 		</section>
-		`;
-	});
-	ele.innerHTML = setHTML;
+    `;
+}
+
+const setHTMLdata = (data, ele, limited) => {//서브카테고리 상품진열
+	const itemsToShow = data.slice(0, Math.min(data.length, limited));
+	
+	if(data.length > 0){
+		ele.innerHTML = itemsToShow.map(createItemHTML).join('');
+	}else{
+		ele.innerHTML = '<article style="margin:30px auto; font-size:1.3rem; font-weight:700; color:#e42221;">검색된 상품이 없습니다.</article>';
+	}
+	
+	const tooltipTriggerList = ele.querySelectorAll('[data-bs-toggle="tooltip"]');
+	const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
 	
 	VanillaTilt.init(ele.querySelectorAll(".item-img"), {
 	    max: 25,

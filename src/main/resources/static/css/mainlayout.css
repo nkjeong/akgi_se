@@ -18,6 +18,16 @@ body{
 	font-size:0.9rem;
 }
 
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* 다른 요소들 위에 고정되도록 */
+    background-color: white; /* 배경색 지정 (투명도를 없애기 위해) */
+    box-shadow: 0 0 20px rgba(0,0,0,0.4);
+}
+
 .header{
 	height:80px;
 	display:flex;
@@ -163,6 +173,7 @@ body{
 }
 
 .main{
+	margin-top:130px;
 	flex:1;
 	padding:1px 0 20px 0;
 }
@@ -202,6 +213,11 @@ body{
 
 .main-layout-block-full.main-top > .main-top-right{
 	width:950px;
+}
+
+.main-layout-block-1200.random{
+	border-bottom:1px solid #dcdcdc;
+	padding-bottom:30px;
 }
 
 .main-block-title{
@@ -257,6 +273,12 @@ body{
 	justify-content:center;
 	align-items:center;
 	padding:5px 0;
+}
+
+.main-layout-block-full.main-banner{
+	height:350px;
+	background-image:url(/images/banner/banner_01.jpg);
+	background-size: cover;
 }
 
 .footer{

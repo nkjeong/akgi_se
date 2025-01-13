@@ -12,30 +12,33 @@
     <title>대광악사 :: GRANSEN</title>
 </head>
 <body>
-    <section class="header">
-    	<section>
-    		<section class="logo">
-    			<img src="/images/logo_02.png" title="홈" onclick="location.href='/'">
-    			<span class="setTodate"></span>
-    		</section>
-    		<section class="search">
-    			<form name="searchForm" class="searchForm">
-    				<input type="text" class="search" placeholder="상품을 검색하세요.">
-    			</form>
-    		</section>
-    		<section class="member">
-    			<section title="회원가입">회원가입</section>
-    			<section title="회원 로그인">로그인</section>
-    		</section>
-    	</section>
-    </section>
-    <section class="navigation">
-    	<nav>
-    		<ul>
-				<!-- setCategory fn => html code -->
-    		</ul>
-    	</nav>
-    </section>
+	<header>
+	    <section class="header">
+	    	<section>
+	    		<section class="logo">
+	    			<img src="/images/logo_02.png" title="홈" onclick="location.href='/'">
+	    			<span class="setTodate"></span>
+	    		</section>
+	    		<section class="search">
+	    			<form name="searchForm" class="searchForm">
+	    				<input type="text" class="search" placeholder="상품을 검색하세요.">
+	    			</form>
+	    		</section>
+	    		<section class="member">
+	    			<section title="회원가입">회원가입</section>
+	    			<section title="회원 로그인">로그인</section>
+	    		</section>
+	    	</section>
+	    </section>
+	    <section class="navigation">
+	    	<nav>
+	    		<ul>
+					<!-- setCategory fn => html code -->
+	    		</ul>
+	    	</nav>
+	    </section>
+	</header>
+	
     <section class="main">
     	
     	<section class="main-layout-block-full main-top">
@@ -83,9 +86,19 @@
 				  </div>
     		</section>
     	</section>
-    	<section class="main-layout-block-1200">
+    	<section class="main-layout-block-1200 random">
+    		<section><span class="main-block-title"></span></section>
+    		<section class="category-items-list item-list">
+    			<!-- category item click fn => html code -->
+    		</section>
+    	</section>
+    	<section class="main-layout-block-1200 cate" id="categoryItemList">
     		<section>[<span class="setItemLength"></span>] <span class="main-block-title"></span></section>
-    		<section class="category-items-list item-list"></section>
+    		<section class="category-items-list item-list">
+    			<!-- category item click fn => html code -->
+    		</section>
+    	</section>
+    	<section class="main-layout-block-full main-banner">
     	</section>
     </section>
     <section class="footer">
