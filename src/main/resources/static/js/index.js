@@ -149,6 +149,7 @@ const setHTMLdata = (data, ele, limited) => {//서브카테고리 상품진열
 	VanillaTilt.init(ele.querySelectorAll(".item-img"), {
 	    max: 25,
 	    speed: 400,
+		perspective: 1000,
 	    glare: true,
 	    "max-glare":1,
 	});
