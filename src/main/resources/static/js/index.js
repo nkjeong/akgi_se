@@ -117,7 +117,7 @@ const getCategoryItem = async (url, name, setMode) => {
 			if(setMode === 'search'){
 				listTitle.innerHTML = `<b>검색상품 : ${name}</b>`;
 				let size = documentSize();
-				setBlockEle.style.height = `${size.height - 300}px`;
+				setBlockEle.style.height = `${size.height-200}px`;
 			}else{
 				listTitle.innerHTML = `<b>${name} 카테고리 상품 (${data.length}개)</b>`;
 			}
