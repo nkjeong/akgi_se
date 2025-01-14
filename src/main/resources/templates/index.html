@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/tripleSlider/demo-static/main.css">
     <link rel="stylesheet" href="/css/variable.css">
     <link rel="stylesheet" href="/css/mainlayout.css">
+    <link rel="stylesheet" href="/css/3danimation.css">
     <title>대광악사 :: GRANSEN</title>
 </head>
 <body>
@@ -21,7 +22,7 @@
 	    		</section>
 	    		<section class="search">
 	    			<form name="searchForm" class="searchForm">
-	    				<input type="text" class="search" placeholder="상품을 검색하세요.">
+	    				<input type="text" name="search" class="search" placeholder="상품을 검색하세요.">
 	    			</form>
 	    		</section>
 	    		<section class="member">
@@ -36,6 +37,10 @@
 					<!-- setCategory fn => html code -->
 	    		</ul>
 	    	</nav>
+	    	<section class="searchWrapper">
+	    		<section class="search-title"></section>
+	    		<section class="search-item-list"></section>
+	    	</section>
 	    </section>
 	</header>
 	
@@ -92,13 +97,35 @@
     			<!-- category item click fn => html code -->
     		</section>
     	</section>
+    	<section class="main-layout-block-1200 action-banner">
+			<section class="banner_3d_1">
+				<article class="box_1"><!-- banner_3d_1 in html --></article>
+			</section>
+			<section class="banner_02"><img src="/images/banner/banner_02.jpg"></section>
+    	</section>
     	<section class="main-layout-block-1200 cate" id="categoryItemList">
     		<section>[<span class="setItemLength"></span>] <span class="main-block-title"></span></section>
     		<section class="category-items-list item-list">
     			<!-- category item click fn => html code -->
     		</section>
     	</section>
-    	<section class="main-layout-block-full main-banner">
+    	<section class="main-layout-block-full main-banner" style="margin:0;">
+    	</section>
+    	
+    	<section class="main-layout-block-full" style="background-image:url(/images/banner/banner_03.jpg); background-size:cover; padding:30px 0;">
+    		<section class="line-items"></section>
+    		<section class="text-banner_01">Gransenis a musical instrument store that manufactures, sells, and repairs instruments ranging from beginner instruments to professional instruments.</section>
+    	</section>
+    	
+    	<section class="main-layout-block-1200 action-banner">
+			<section class="banner_3d_2Sec">
+				<section class="mainLayoutWidth">
+					<section class="banner_3d_2">
+						<section class="box_2">
+						</section>
+					</section>
+				</section>
+			</section>
     	</section>
     </section>
     <section class="footer">
@@ -107,7 +134,6 @@
     			<img style="width:45px;" src="/images/logo_02.png" title="홈" onclick="location.href='/'">
     		</section>
     		<section class="since">
-    			1997 - 2025
     		</section>
     	</section>
     	<section class="company">
@@ -171,6 +197,7 @@
     <script src="/js/currentMoney.js"></script>
     <script src="/js/calendar.js"></script>
     <script src="/js/index.js"></script>
+    <script src="/js/img3Daction.js"></script>
   <script>
     const container = document.querySelector('.main-layout-block-full');
     const containerWidth = container.offsetWidth;

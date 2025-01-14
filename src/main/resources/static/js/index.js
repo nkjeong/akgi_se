@@ -88,6 +88,8 @@ document.querySelector('.categoryBtn').addEventListener('click', function() {
 
 const getCategoryItem = async (url, name, setMode) => {
 	
+	console.log(url)
+	
     let listTitle;
 	let setBlockEle = '';
 	let limited = 0;
@@ -98,7 +100,12 @@ const getCategoryItem = async (url, name, setMode) => {
 		listTitle = document.querySelector('section.random>section>.main-block-title');
 		setBlockEle = document.querySelector('section.random>.item-list');
 		limited = 5;
+	}else if(setMode === 'search'){
+		listTitle = document.querySelector('header .navigation .search-title');
+		setBlockEle = document.querySelector('header .navigation .search-item-list');
 	}
+	
+	console.log(setBlockEle)
     try {
 		if(listTitle){
 			
@@ -107,7 +114,14 @@ const getCategoryItem = async (url, name, setMode) => {
 	            throw new Error('Network response was not ok');
 	        }
 	        const data = await response.json();
-			listTitle.innerHTML = `<b>${name} 카테고리 상품 (${data.length}개)</b>`;
+			if(setMode === 'search'){
+				listTitle.innerHTML = `<b>검색상품 : ${name}</b>`;
+				let size = documentSize();
+				setBlockEle.style.height = `${size.height - 300}px`;
+			}else{
+				listTitle.innerHTML = `<b>${name} 카테고리 상품 (${data.length}개)</b>`;
+			}
+			
 			if(limited === 0)limited = data.length;
 			setHTMLdata(data, setBlockEle, limited);
         }
@@ -145,12 +159,65 @@ const setHTMLdata = (data, ele, limited) => {//서브카테고리 상품진열
 	
 	const tooltipTriggerList = ele.querySelectorAll('[data-bs-toggle="tooltip"]');
 	const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
-	
-	VanillaTilt.init(ele.querySelectorAll(".item-img"), {
+	vanillaTiltEle(ele, ".item-img");
+}
+
+const setLineItems = async ()=>{
+	const lineItems = document.querySelector('.line-items');
+	let setHTML = ''
+	const directoryPath = 'C:/Users/abidan/git/repository/web/src/main/resources/static/images/banner/line_items';
+	try {
+        const response = await fetch(`/api/files/list?directoryPath=${encodeURIComponent(directoryPath)}`);
+        const data = await response.json();
+        data.forEach((d, i)=>{
+			setHTML += `
+				<article class="line-banner"><img src="/images/banner/line_items/${d}"></article>
+				<article class="line-banner-dot">•</article>
+			`;
+		});
+		lineItems.innerHTML = setHTML;
+		vanillaTiltEle(lineItems, ".line-banner");
+    } catch (error) {
+        console.error('Error fetching the file list:', error);
+    }
+}
+
+setLineItems();
+
+const getSearchItems = () => {
+	const keyword = document.querySelector('header .header form.searchForm input.search');
+	const searchWrapper = document.querySelector('header .searchWrapper');
+	keyword.addEventListener('keyup', (kw)=>{
+		if(kw.target.value.length > 0){
+			console.log(kw.target.value)
+			getCategoryItem(`/api/gallery/search/${kw.target.value}`, kw.target.value, 'search');
+		}else{
+			
+		}
+	});
+	keyword.addEventListener('focus', (kw)=>{
+		searchWrapper.classList.add('searchWrapper-action');
+		document.body.style.overflow = 'hidden'
+	});
+/*	keyword.addEventListener('blur', (kw)=>{
+		searchWrapper.classList.remove('searchWrapper-action');
+		keyword.value = '';
+	});*/
+}
+
+getSearchItems();
+
+const vanillaTiltEle = (ele, cls) => {
+	VanillaTilt.init(ele.querySelectorAll(cls), {
 	    max: 25,
 	    speed: 400,
 		perspective: 1000,
 	    glare: true,
 	    "max-glare":1,
 	});
+}
+
+const documentSize = () => {
+	let size = document.body.getBoundingClientRect();
+	return size;
 }

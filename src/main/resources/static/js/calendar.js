@@ -13,7 +13,7 @@ const setGransenInfo = async (url, cls) => {
 			html = `
 	        	1997 - ${data.year}
 	        `;
-		}if(cls == 'setTodate'){
+		}else if(cls == 'setTodate'){
 			html = `
 	        	${data.year} / ${data.month} / ${data.date} / ${data.toDay}
 	        `;

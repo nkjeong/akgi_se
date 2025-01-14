@@ -19,13 +19,13 @@ const set3DactionImg = async (ele, dir, finalDir) => {
     }
 }
 
-//set3DactionImg('.box_1', 'D:/git/akgi/web/src/main/resources/static/images/banner/banner_3d_1', 'banner_3d_1');
-//set3DactionImg('.box_2', 'D:/git/akgi/web/src/main/resources/static/images/banner/banner_3d_2', 'banner_3d_2');
+set3DactionImg('.box_1', 'C:/Users/abidan/git/repository/web/src/main/resources/static/images/banner/banner_3d_1', 'banner_3d_1');
+set3DactionImg('.box_2', 'C:/Users/abidan/git/repository/web/src/main/resources/static/images/banner/banner_3d_2', 'banner_3d_2');
 //set3DactionImg('.box_1', 'E:/gitakgi/akgi/web/src/main/resources/static/images/banner/banner_3d_1', 'banner_3d_1');
 //set3DactionImg('.box_2', 'E:/gitakgi/akgi/web/src/main/resources/static/images/banner/banner_3d_2', 'banner_3d_2');
 //set3DactionImg('.box_1', 'H:/0_akgi/github/akgi/web/src/main/resources/static/images/banner/banner_3d_1', 'banner_3d_1');
 //set3DactionImg('.box_2', 'H:/0_akgi/github/akgi/web/src/main/resources/static/images/banner/banner_3d_2', 'banner_3d_2');
 
 
-set3DactionImg('.box_1', '/web/akgiwebapp/src/main/resources/static/images/banner/banner_3d_1', 'banner_3d_1');
-set3DactionImg('.box_2', '/web/akgiwebapp/src/main/resources/static/images/banner/banner_3d_2', 'banner_3d_2');
+//set3DactionImg('.box_1', '/web/akgiwebapp/src/main/resources/static/images/banner/banner_3d_1', 'banner_3d_1');
+//set3DactionImg('.box_2', '/web/akgiwebapp/src/main/resources/static/images/banner/banner_3d_2', 'banner_3d_2');
