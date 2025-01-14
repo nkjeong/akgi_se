@@ -194,10 +194,30 @@ header {
 	font-size:2.0rem;
 	color:#515151;
 	display: flex;
-	justify-content: center;
 	padding:10px;
 	border-bottom:1px solid #292929;
 	height:70px;
+}
+
+.navigation .searchWrapper .search-title > section:not(:nth-of-type(2)){
+	width:30%;
+}
+.navigation .searchWrapper .search-title > section:nth-of-type(2){
+	display: flex;
+	justify-content: center;
+	flex:1;
+}
+.navigation .searchWrapper .search-title > section:last-child{
+	display:flex;
+	justify-content: flex-end;
+	align-items: center;
+	color:var(--bs-danger);
+}
+.navigation .searchWrapper .search-title > section:last-child > i{
+	cursor: pointer;
+}
+.navigation .searchWrapper .search-title > section:last-child > i:hover{
+	color:#515151;
 }
 
 .main{
@@ -279,19 +299,23 @@ header {
 	border-color:#292929;
 	margin:10px 10px 10px 10px;
 	width:150px;
-	height:250px;
+	height:220px;
 }
 
 .category-items-list > section .item-img,
 .search-item-list > section .item-img{
-	width:130px;
-	height:130px;
+	width:210px;
+	height:210px;
 	border-radius:10px;
 	margin: 10px 0;
 	position: relative;
 	cursor:pointer;
 	border:1px solid #eeeeee;
 	transform-style: preserve-3d;
+}
+.search-item-list > section .item-img{
+	width:130px;
+	height:130px;
 }
 
 .search-item-list > section .item-img{
@@ -330,6 +354,10 @@ header {
 	border-color:#292929;
 	color:#979797;
 	width:130px;
+}
+
+.search-item-list .item-info{
+	font-size:0.75rem;
 }
 /*--------*/
 .main-layout-block-1200 > .banner_02{

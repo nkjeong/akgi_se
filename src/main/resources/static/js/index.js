@@ -70,7 +70,6 @@ const getSubItems = (ele) => {
 
 const setCategoryNumber = (categoryNumbers) => {
     const number = getRandomNumber(1, categoryNumbers.length);
-	console.log(number)
     const { code, name } = categoryNumbers[number - 1];
     getCategoryItem(`/api/gallery/category/${code}`, name, 'categoryRandom');
 }
@@ -87,9 +86,6 @@ document.querySelector('.categoryBtn').addEventListener('click', function() {
 
 
 const getCategoryItem = async (url, name, setMode) => {
-	
-	console.log(url)
-	
     let listTitle;
 	let setBlockEle = '';
 	let limited = 0;
@@ -101,11 +97,9 @@ const getCategoryItem = async (url, name, setMode) => {
 		setBlockEle = document.querySelector('section.random>.item-list');
 		limited = 5;
 	}else if(setMode === 'search'){
-		listTitle = document.querySelector('header .navigation .search-title');
+		listTitle = document.querySelector('header .navigation .search-title section:nth-of-type(2)');
 		setBlockEle = document.querySelector('header .navigation .search-item-list');
 	}
-	
-	console.log(setBlockEle)
     try {
 		if(listTitle){
 			
@@ -189,16 +183,27 @@ const getSearchItems = () => {
 	const searchWrapper = document.querySelector('header .searchWrapper');
 	keyword.addEventListener('keyup', (kw)=>{
 		if(kw.target.value.length > 0){
-			console.log(kw.target.value)
 			getCategoryItem(`/api/gallery/search/${kw.target.value}`, kw.target.value, 'search');
 		}else{
-			
+			const searchTitle = searchWrapper.querySelector('.search-title section:nth-of-type(2)');
+			const searchItemList = searchWrapper.querySelector('section.search-item-list');
+			searchTitle.innerHTML = `<b>검색상품</b>`;
+			searchItemList.innerHTML = `<article style="margin:30px auto;font-size:1.3rem;font-weight:700;color:#e42221;">검색어를 입력하세요</article>`;
 		}
 	});
 	keyword.addEventListener('focus', (kw)=>{
 		searchWrapper.classList.add('searchWrapper-action');
 		document.body.style.overflow = 'hidden'
 	});
+	
+	const closeBtn = searchWrapper.querySelector('i.fa-solid.fa-xmark.fa-beat');
+	console.log(closeBtn)
+	closeBtn.addEventListener('click', (kw)=>{
+		searchWrapper.classList.remove('searchWrapper-action');
+		document.body.style.overflow = 'scroll';
+		keyword.value = '';
+	});
+	
 /*	keyword.addEventListener('blur', (kw)=>{
 		searchWrapper.classList.remove('searchWrapper-action');
 		keyword.value = '';
@@ -221,3 +226,5 @@ const documentSize = () => {
 	let size = document.body.getBoundingClientRect();
 	return size;
 }
+
+
