@@ -1,0 +1,69 @@
+@charset "UTF-8";
+
+.new-modal {
+	display: flex;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: rgba(0, 0, 0, 0.8);
+	width: 100%;
+	height: 100%;
+	z-index: 1500;
+	visibility: hidden;
+	opacity: 0;
+	transform: translateY(0); /* 초기 상태: 화면 위로 이동 */
+	transition: opacity 0.3s cubic-bezier(0.5, 0, 0.75, 0);
+}
+
+.new-modal-open {
+	visibility: visible;
+	opacity: 1;
+	transform: translateY(0); /* 활성화 상태: 원래 위치로 이동 */
+}
+
+.content-box {
+	margin: 20px 0;
+	position: absolute;
+	left: 50%;
+	transform: translate(-50%, -100%); /* X와 Y 방향 모두 설정 */
+	width: 1200px;
+	height:80%;
+	background-color: #ffffff;
+	border-radius: 10px;
+	box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
+	transition: transform 0.5s cubic-bezier(0, 0.55, 0.45, 1);
+	overflow: hidden; /* 스크롤바 숨김 */
+}
+
+.content-box .scrollable-content {
+	width: 100%;
+	height: 100%;
+	padding:20px 20px;
+	overflow-y: scroll; /* 세로 스크롤 가능 */
+	overflow-x: hidden; /* 가로 스크롤 숨김 */
+	scrollbar-width: none; /* Firefox에서 스크롤바 숨김 */
+	-webkit-overflow-scrolling: touch; /* 부드러운 스크롤 */
+}
+
+.content-box .scrollable-content::-webkit-scrollbar {
+	display: none; /* Webkit 브라우저에서 스크롤바 숨김 */
+}
+
+.content-box-slide {
+	transform: translate(-50%, 0); /* X는 중앙, Y는 활성화 상태 */
+}
+
+.modal-info{
+	padding:10px;
+	border-bottom:1px solid #eeeeee;
+}
+
+.modal-title, .modal-close{
+	font-weight:700;
+	font-size:1.2rem;
+	padding:10px 0;
+}
+.modal-close{
+	display:flex;
+	justify-content: flex-end;
+}

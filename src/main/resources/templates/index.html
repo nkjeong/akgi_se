@@ -5,15 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/99f7b4874c.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11.0.5/swiper-bundle.min.css">
     <link rel="stylesheet" href="/tripleSlider/demo-static/triple-slider.css">
     <link rel="stylesheet" href="/tripleSlider/demo-static/main.css">
     <link rel="stylesheet" href="/css/variable.css">
     <link rel="stylesheet" href="/css/mainlayout.css">
     <link rel="stylesheet" href="/css/3danimation.css">
+    <link rel="stylesheet" href="/css/modal.css">
     <title>대광악사 :: GRANSEN</title>
 </head>
 <body>
+	<section class="new-modal">
+		<section class="content-box">
+			<section class="scrollable-content">
+			</section>
+		</section>
+	</section>
 	<header>
 	    <section class="header">
 	    	<section>
@@ -27,8 +34,8 @@
 	    			</form>
 	    		</section>
 	    		<section class="member">
-	    			<section title="회원가입">회원가입</section>
-	    			<section title="회원 로그인">로그인</section>
+	    			<section class="member-join" title="회원가입">회원가입</section>
+	    			<section class="member-login" title="회원 로그인">로그인</section>
 	    		</section>
 	    	</section>
 	    </section>
@@ -58,7 +65,7 @@
 				</video>
     		</section>
     		<section class="main-top-right">
-				  <div id="app">
+				  <div id="app2">
 				    <!-- Triple slider -->
 				    <div class="triple-slider">
 				      <!-- Duplicate swipers will be created automatically -->
@@ -68,13 +75,11 @@
 				        <div class="swiper-wrapper">
 				          <div class="swiper-slide">
 				            <img class="bg-image" src="/tripleSlider/assets/images/cello.jpg" alt="">
-				            <img class="logo-image logo-image-1" data-swiper-parallax-x="50%"
-				              src="/tripleSlider/assets/images/cello_banner.png" alt="">
+				            <img class="logo-image logo-image-1" data-swiper-parallax-x="50%" src="/tripleSlider/assets/images/cello_banner.png" alt="">
 				          </div>
 				          <div class="swiper-slide">
 				            <img class="bg-image" src="/tripleSlider/assets/images/kalimba.jpg" alt="">
-				            <img class="logo-image logo-image-2" data-swiper-parallax-x="50%" src="/tripleSlider/assets/images/kalimba_banner.png"
-				              alt="">
+				            <img class="logo-image logo-image-2" data-swiper-parallax-x="50%" src="/tripleSlider/assets/images/kalimba_banner.png" alt="">
 				          </div>
 				          <div class="swiper-slide">
 				            <img class="bg-image" src="/tripleSlider/assets/images/ukulele.jpg" alt="">
@@ -82,13 +87,11 @@
 				          </div>
 				          <div class="swiper-slide">
 				            <img class="bg-image" src="/tripleSlider/assets/images/flute.jpg" alt="">
-				            <img class="logo-image logo-image-4" data-swiper-parallax-x="50%" src="/tripleSlider/assets/images/flute_banner.png"
-				              alt="">
+				            <img class="logo-image logo-image-4" data-swiper-parallax-x="50%" src="/tripleSlider/assets/images/flute_banner.png" alt="">
 				          </div>
 				          <div class="swiper-slide">
 				            <img class="bg-image" src="/tripleSlider/assets/images/violin.jpg" alt="">
-				            <img class="logo-image logo-image-5" data-swiper-parallax-x="50%" src="/tripleSlider/assets/images/violin_banner.png"
-				              alt="">
+				            <img class="logo-image logo-image-5" data-swiper-parallax-x="50%" src="/tripleSlider/assets/images/violin_banner.png" alt="">
 				          </div>
 				        </div>
 				      </div>
@@ -99,7 +102,7 @@
     	<section class="main-layout-block-1200 random">
     		<section><span class="main-block-title"></span></section>
     		<section class="category-items-list item-list">
-    			<!-- category item click fn => html code -->
+    			<!-- category item random fn => html code -->
     		</section>
     	</section>
     	<section class="main-layout-block-1200 action-banner">
@@ -108,8 +111,48 @@
 			</section>
 			<section class="banner_02"><img src="/images/banner/banner_02.jpg"></section>
     	</section>
-    	<section class="main-layout-block-1200 cate" id="categoryItemList">
-    		<section>[<span class="setItemLength"></span>] <span class="main-block-title"></span></section>
+    	<section class="main-layout-block-1200" style="position:relative; height:250px;">
+    		<section style="width:100px; z-index:50; height:100px; border-radius:50%; background-color:#000000; position:absolute; left: 50%; transform: translateX(-50%) translateY(0);display:flex; justify-content: center; align-items: center;">
+    			<img style="width:45px; cursor:pointer;" src="/images/logo_03.png" title="홈" onclick="location.href='/'">
+    		</section>
+    		<section style="width:70px; z-index:40; height:70px; border-radius:50%; background-color:#000000; position:absolute; left: 50%; transform: translateX(-50%) translateY(60px);"></section>
+    		<section style="width:40px; height:40px; border-radius:50%; background-color:#000000; position:absolute; left: 50%; transform: translateX(-50%) translateY(110px);"></section>
+    		<section style="width:25px; height:25px; border-radius:50%; background-color:#000000; position:absolute; left: 50%; transform: translateX(-50%) translateY(140px);"></section>
+    		<section style="width:50px; height:50px; border-radius:50%; background-color:#000000; position:absolute; left: 50%; transform: translateX(-50%) translateY(160px);"></section>
+    		<section style="width:35px; height:35px; border-radius:50%; background-color:#000000; position:absolute; left: 50%; transform: translateX(-50%) translateY(210px);"></section>
+    	</section>
+    	<section class="main-layout-block-1200 action-banner_02">
+			<div class="container" id="categoryItemList">
+				<img src="/images/banner/banner-effects-hover/img_1.jpg" class="img">
+				<img src="/images/banner/banner-effects-hover/img_2.jpg" class="img">
+				<img src="/images/banner/banner-effects-hover/img_3.jpg" class="img">
+				<img src="/images/banner/banner-effects-hover/img_4.jpg" class="img">
+				<img src="/images/banner/banner-effects-hover/img_5.jpg" class="img">
+				<img src="/images/banner/banner-effects-hover/img_6.jpg" class="img">
+			</div>
+			<script>
+				document.querySelectorAll('.img').forEach((box, index, boxes) => {
+					box.addEventListener('mouseover', ()=>{
+						boxes.forEach((b,i) => {
+							let className = i < index ? 'prev' : i === index ? 'hovered' : 'next';
+							b.classList.remove('prev','next','hovered');
+							b.classList.add(className);
+						});
+					});
+					box.addEventListener('mouseleave', ()=>{
+						boxes.forEach((b) => b.classList.remove('prev','next','hovered'));
+					});
+				});
+			</script>
+    	</section>
+    	
+    	<section class="main-layout-block-1200 cate">
+    		<section>
+    			<span>
+    				<span class="setItemLength"></span>
+    				<span class="main-block-title"></span>
+    			</span>
+    		</section>
     		<section class="category-items-list item-list">
     			<!-- category item click fn => html code -->
     		</section>
@@ -131,6 +174,11 @@
 					</section>
 				</section>
 			</section>
+    	</section>
+    	
+    	<section class="main-layout-block-full all">
+    		<section><span class="main-block-title"></span></section>
+    		<section class="all-items-list item-list"></section>
     	</section>
     </section>
     <section class="footer">
@@ -195,7 +243,7 @@
     </section>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11.0.5/swiper-bundle.min.js"></script>
     <script src="/tripleSlider/demo-static/triple-slider.js"></script>
     <script src="/tripleSlider/demo-static/main.js"></script>
     <script src="/js/vanilla-tilt.js"></script>
@@ -203,6 +251,7 @@
     <script src="/js/calendar.js"></script>
     <script src="/js/index.js"></script>
     <script src="/js/img3Daction.js"></script>
+    <script src="/js/modal.js"></script>
   <script>
     const container = document.querySelector('.main-layout-block-full');
     const containerWidth = container.offsetWidth;

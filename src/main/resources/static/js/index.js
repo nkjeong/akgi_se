@@ -90,8 +90,8 @@ const getCategoryItem = async (url, name, setMode) => {
 	let setBlockEle = '';
 	let limited = 0;
 	if(setMode === 'subCategory'){
-		listTitle = document.querySelector('section.cate>section>.main-block-title');
-		setBlockEle = document.querySelector('section.cate>.item-list');
+		listTitle = document.querySelector('section.cate>section .main-block-title');
+		setBlockEle = document.querySelector('section.cate .item-list');
 	}else if(setMode === 'categoryRandom'){
 		listTitle = document.querySelector('section.random>section>.main-block-title');
 		setBlockEle = document.querySelector('section.random>.item-list');
@@ -99,6 +99,9 @@ const getCategoryItem = async (url, name, setMode) => {
 	}else if(setMode === 'search'){
 		listTitle = document.querySelector('header .navigation .search-title section:nth-of-type(2)');
 		setBlockEle = document.querySelector('header .navigation .search-item-list');
+	}else if(setMode === 'all'){
+		listTitle = document.querySelector('section.main-layout-block-full.all > section > .main-block-title');
+		setBlockEle = document.querySelector('section.all-items-list.item-list');
 	}
     try {
 		if(listTitle){
@@ -112,41 +115,88 @@ const getCategoryItem = async (url, name, setMode) => {
 				listTitle.innerHTML = `<b>검색상품 : ${name}</b>`;
 				let size = documentSize();
 				setBlockEle.style.height = `${size.height-200}px`;
+			}else if(setMode === 'all'){
+				listTitle.innerHTML = `<b>${name} 상품 (${data.length}개)</b>`;
 			}else{
-				listTitle.innerHTML = `<b>${name} 카테고리 상품 (${data.length}개)</b>`;
+				listTitle.innerHTML = `<b>카테고리 : ${name} 상품 (${data.length}개)</b>`;
 			}
 			
 			if(limited === 0)limited = data.length;
-			setHTMLdata(data, setBlockEle, limited);
+			setHTMLdata(data, setBlockEle, limited, setMode);
         }
     } catch (error) {
         console.error('There was a problem with the fetch operation:', error.message);
     }
 }
 
-const createItemHTML = (item) => {
+const createItemHTML = (item, setMode) => {
+	
     let itemName = item.name.length > 14 ? item.name.substring(0, 13) + '...' : item.name;
     let code = item.code;
     let itemString = JSON.stringify(item).replace(/"/g, '&quot;');
-    return `
-		<section data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="${item.name}">
-			<section class="item-img" data-item="${itemString}">
-				<img src="${rootURL}/images/1000/gransen_${item.code}.jpg" class="d-img">
-				<section class="in-logo"><img src="/images/logo_02.png"></section>
+	if(setMode === 'all'){
+		return `
+			<section data-code="${code}" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="${item.name}">
+				<section class="item-img" data-item="${itemString}">
+					<img class="d-img rep-image" data-src="${rootURL}/images/1000/gransen_${item.code}.jpg">
+					<section class="in-logo"><img src="/images/logo_02.png"></section>
+				</section>
+				<section class="item-info">
+					<article>${itemName}</article>
+					<article>${getCurrentMony(item.price)}</article>
+				</section>
 			</section>
-			<section class="item-info">
-				<article>${itemName}</article>
-				<article>${getCurrentMony(item.price)}</article>
+		`;
+	}else{
+		return `
+			<section data-code="${code}" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="${item.name}">
+				<section class="item-img" data-item="${itemString}">
+					<img src="${rootURL}/images/1000/gransen_${item.code}.jpg" class="d-img">
+					<section class="in-logo"><img src="/images/logo_02.png"></section>
+				</section>
+				<section class="item-info">
+					<article>${itemName}</article>
+					<article>${getCurrentMony(item.price)}</article>
+				</section>
 			</section>
-		</section>
-    `;
+		`;
+	}
 }
 
-const setHTMLdata = (data, ele, limited) => {//서브카테고리 상품진열
+const setHTMLdata = (data, ele, limited, setMode) => {//서브카테고리 상품진열
 	const itemsToShow = data.slice(0, Math.min(data.length, limited));
 	
 	if(data.length > 0){
-		ele.innerHTML = itemsToShow.map(createItemHTML).join('');
+		ele.innerHTML = itemsToShow.map(item => createItemHTML(item, setMode)).join('');
+		if(setMode === 'all'){
+			const images = ele.querySelectorAll('.rep-image');
+		    const lazyLoad = (entries, observer) => {
+		        entries.forEach(entry => {
+		            if (entry.isIntersecting) {
+		                const img = entry.target;
+		                img.src = img.dataset.src; // data-src 속성의 값을 src로 설정
+		                img.classList.add('loaded'); // 로드 완료된 이미지에 클래스 추가
+		                observer.unobserve(img); // 더 이상 관찰하지 않음
+		            }
+		        });
+		    };
+		    const observer = new IntersectionObserver(lazyLoad, {
+		        root: null, // 뷰포트를 기준으로 관찰
+		        rootMargin: "0px",
+		        threshold: 0.5 // 10%만 보여도 로드 시작
+		    });
+		    images.forEach(image => {
+		        observer.observe(image); // 모든 이미지 관찰 시작
+		    });
+		}
+		
+		const item = ele.querySelectorAll('.item-img');
+		item.forEach((btns)=>{
+			btns.addEventListener('click', (btn)=>{
+				modal(btn.currentTarget);
+			});
+		});
+		
 	}else{
 		ele.innerHTML = '<article style="margin:30px auto; font-size:1.3rem; font-weight:700; color:#e42221;">검색된 상품이 없습니다.</article>';
 	}
@@ -197,7 +247,6 @@ const getSearchItems = () => {
 	});
 	
 	const closeBtn = searchWrapper.querySelector('i.fa-solid.fa-xmark.fa-beat');
-	console.log(closeBtn)
 	closeBtn.addEventListener('click', (kw)=>{
 		searchWrapper.classList.remove('searchWrapper-action');
 		document.body.style.overflow = 'scroll';
@@ -211,6 +260,12 @@ const getSearchItems = () => {
 }
 
 getSearchItems();
+
+const getAllItems = () =>{
+	getCategoryItem('/api/gallery', '전체', 'all');
+}
+
+getAllItems();
 
 const vanillaTiltEle = (ele, cls) => {
 	VanillaTilt.init(ele.querySelectorAll(cls), {

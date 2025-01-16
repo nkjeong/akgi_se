@@ -42,7 +42,7 @@ header {
 	margin:0 auto;
 }
 .header > section .logo{
-	width:20%;
+	width:30%;
 	display: flex;
     align-items: center;
 }
@@ -76,7 +76,7 @@ header {
 }
 
 .header > section .member{
-	width:20%;
+	width:30%;
 	display:flex;
 	justify-content: flex-end;
 	align-items:center;
@@ -211,12 +211,12 @@ header {
 	display:flex;
 	justify-content: flex-end;
 	align-items: center;
+}
+i.fa-solid.fa-xmark.fa-beat{
+	cursor: pointer;
 	color:var(--bs-danger);
 }
-.navigation .searchWrapper .search-title > section:last-child > i{
-	cursor: pointer;
-}
-.navigation .searchWrapper .search-title > section:last-child > i:hover{
+i.fa-solid.fa-xmark.fa-beat:hover{
 	color:#515151;
 }
 
@@ -273,7 +273,8 @@ header {
 
 /*--------*/
 .category-items-list,
-.search-item-list{
+.search-item-list,
+.all-items-list{
 	display:flex;
 	justify-content: space-between;
 	flex-wrap: wrap;
@@ -284,7 +285,8 @@ header {
 
 
 .category-items-list > section,
-.search-item-list > section{
+.search-item-list > section,
+.all-items-list > section{
 	width:230px;
 	height:300px;
 	border:1px solid #dcdcdc;
@@ -303,7 +305,8 @@ header {
 }
 
 .category-items-list > section .item-img,
-.search-item-list > section .item-img{
+.search-item-list > section .item-img,
+.all-items-list > section .item-img{
 	width:210px;
 	height:210px;
 	border-radius:10px;
@@ -323,12 +326,14 @@ header {
 }
 
 .category-items-list > section .item-img img,
-.search-item-list > section .item-img img{
+.search-item-list > section .item-img img,
+.all-items-list > section .item-img img{
 	width:100%;
 	border-radius:10px;
 }
 .category-items-list > section .item-img > .in-logo,
-.search-item-list > section .item-img > .in-logo{
+.search-item-list > section .item-img > .in-logo,
+.all-items-list > section .item-img > .in-logo{
 	position: absolute;
 	top:10px;
 	left:10px;
@@ -336,7 +341,8 @@ header {
 	transform: translateZ(20px);
 }
 .category-items-list > section .item-img > .in-logo img,
-.search-item-list > section .item-img > .in-logo img{
+.search-item-list > section .item-img > .in-logo img,
+.all-items-list > section .item-img > .in-logo img{
 	width:100%;
 }
 
@@ -360,6 +366,25 @@ header {
 	font-size:0.75rem;
 }
 /*--------*/
+
+.main-layout-block-full.all > section:first-child,
+.main-layout-block-1200.random > section:first-child,
+.main-layout-block-1200.cate > section:first-child{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size:1.5rem;
+}
+.main-layout-block-full.all > section:first-child > span,
+.main-layout-block-1200.random > section:first-child > span,
+.main-layout-block-1200.cate > section:first-child > span{
+	padding:10px 20px;
+	background-color:#000000;
+	color:#626262;
+	border-radius:20px;
+	margin:30px 0;
+}
+
 .main-layout-block-1200 > .banner_02{
 	width:680px;
 }
@@ -372,14 +397,73 @@ header {
 	height:350px;
 	background-image:url(/images/banner/banner_01.jpg);
 	background-size: cover;
+	position: relative;
+	display: flex;
+    justify-content: center;
 }
 
-.main-layout-block-1200.action-banner{
+.main-layout-block-full.main-banner:before{
+	content:"ONE STOP SERVICE 대광악기사 악기 전문 브랜드 GRANSEN ";
+	position: absolute;
+	line-height: 350px;
+	color:#ffffff;
+	font-size:3.5rem;
+	font-weight:700;
+}
+
+.main-layout-block-1200.action-banner,
+.main-layout-block-1200.action-banner_02{
 	display:flex;
 	justify-content:center;
 	padding:30px 0;
 	background-color:#000000;
 	border-radius:50px;
+}
+
+.action-banner_02{
+	width:900px;
+	align-items: center;
+	height:500px;
+	position: relative;
+}
+.action-banner_02:before{
+	content:"당신의 악기가 더욱 빛나는 순간, 그랑센";
+	position: absolute;
+	color:#626262;
+	font-size:2.5rem;
+	top:50px;
+}
+
+.action-banner_02 .container{
+	position: relative;
+	display: flex;
+	justify-content:center;
+	align-items: center;
+	transform-style:preserve-3d;
+}
+
+.action-banner_02 .container .img{
+	position: relative;
+	width:130px;
+	height:130px;
+	transition:0.5s;
+	transform-origin:bottom center;
+	-webkit-box-reflect:below 1px linear-gradient(transparent, #0002);
+	border-radius: 10px;
+}
+
+.action-banner_02 .container .img.hovered{
+	transform:perspective(500px) rotateY(0deg) scale(1.5);
+	z-index: 900;
+}
+.action-banner_02 .container .img.prev{
+	margin: 0 -20px;
+	transform:perspective(500px) rotateY(45deg) scale(0.95);
+}
+
+.action-banner_02 .container .img.next{
+	margin: 0 -20px;
+	transform:perspective(500px) rotateY(-45deg) scale(0.95);
 }
 
 .main-layout-block-full .line-items{
@@ -407,7 +491,7 @@ header {
 	display:flex;
 	justify-content:center;
 	align-items: center;
-	color:#565656;
+	color:#ffffff;
 }
 .main-layout-block-full .line-items > .line-banner-dot:last-child{
 	display: none;
@@ -443,4 +527,23 @@ section.footer > section:not(:first-child) > section:last-child{
 }
 section.footer > section:not(:last-child){
 	margin-right:20px;
+}
+.mamber-msg{
+	border:1px solid #a3cfbb;
+	border-radius: 5px;
+	background-color: #d1e7dd;
+	padding:10px;
+}
+.rep-image {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.rep-image.loaded {
+    opacity: 1;
+}
+@media (min-width: 576px) {
+    .modal-dialog {
+        max-width: 1000px;
+    }
 }
