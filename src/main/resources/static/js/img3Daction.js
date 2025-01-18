@@ -8,11 +8,12 @@ const set3DactionImg = async (ele, dir, finalDir) => {
         const data = await response.json();
         data.forEach((d, i)=>{
 			html += `
-				<span style="--i:${i+1};"><img src="/images/banner/${finalDir}/${d}"></span>
+				<span style="--i:${i+1};"><img src="/images/banner/${finalDir}/${d}" class="rolling-img"></span>
 			`;
 		});
 		if(getEle){
 			getEle.innerHTML = html;
+			vanillaTiltEle(getEle, ".rolling-img");
 		}
     } catch (error) {
         console.error('Error fetching the file list:', error);

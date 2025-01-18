@@ -137,7 +137,7 @@ const createItemHTML = (item, setMode) => {
 	if(setMode === 'all'){
 		return `
 			<section data-code="${code}" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="${item.name}">
-				<section class="item-img" data-item="${itemString}">
+				<section class="item-img" data-item="${itemString}" data-evt="img-detail">
 					<img class="d-img rep-image" data-src="${rootURL}/images/1000/gransen_${item.code}.jpg">
 					<section class="in-logo"><img src="/images/logo_02.png"></section>
 				</section>
@@ -150,7 +150,7 @@ const createItemHTML = (item, setMode) => {
 	}else{
 		return `
 			<section data-code="${code}" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="${item.name}">
-				<section class="item-img" data-item="${itemString}">
+				<section class="item-img" data-item="${itemString}" data-evt="img-detail">
 					<img src="${rootURL}/images/1000/gransen_${item.code}.jpg" class="d-img">
 					<section class="in-logo"><img src="/images/logo_02.png"></section>
 				</section>
