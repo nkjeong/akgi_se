@@ -3,6 +3,14 @@
 let scroll_y = 0;
 const isLogin = document.querySelector('.isLogin');
 const authority = document.querySelector('.authority');
+
+if(authority){
+	if(authority.value === 'A'){
+		const admin = document.querySelector('.admin');
+		admin.style.display = 'block';
+	}
+}
+
 // 스크롤 위치 업데이트
 window.addEventListener('scroll', () => {
     scroll_y = window.scrollY; // 또는 window.pageYOffset
@@ -26,6 +34,31 @@ const openModal = (title, contentSetter, e) => {
         <section class="modal-close"><i class="fa-solid fa-xmark fa-beat"></i></section>
         <section class="modal-title"><span>${title}</span></section>
     `;
+	if(e.dataset.evt === 'img-detail'){
+		const itemLine = e.dataset.item.replace(/&quot;/g, '"');
+		const item = JSON.parse(itemLine);
+		modalTitle.innerHTML += `
+			<section class="item-info">
+				<section><img src="${rootURL}/images/1000/gransen_${item.code}.jpg"></section>
+				<section>
+					<section>
+						<section>
+							<section>소비자가</section>
+							<section></section>
+						</section>
+						<section>
+							<section>공급가</section>
+							<section></section>
+						</section>
+					</section>
+				</section>
+			</section>
+		`;
+		contentBox.classList.add('re-size-content-box-detail');
+	}
+	if(e.dataset.evt === 'login'){
+			contentBox.classList.add('re-size-content-box-login');
+		}
 
     // 닫기 버튼 이벤트 등록
     const closeBtn = modalTitle.querySelector('.modal-close i');
@@ -88,6 +121,8 @@ const openModal = (title, contentSetter, e) => {
 const closeModal = (modalElement, modalTitle, contentBox) => {
     modalElement.classList.remove('new-modal-open');
 	contentBox.classList.remove('content-box-slide');
+	contentBox.classList.remove('re-size-content-box-detail');
+	contentBox.classList.remove('re-size-content-box-login');
     modalTitle.remove();
     document.body.style.overflow = 'scroll';
 };
@@ -212,8 +247,9 @@ const setLoginForm = () => `
 // 아이템 상세 정보 HTML 생성
 const setItemDetail = (item) => `
     <div class="item-detail">
-        <h3>${item.name}</h3>
-        <p>${item.description || '상세 정보가 없습니다.'}</p>
+        <div>
+			<img src="${rootURL}/images/detail/gransen_${item.code}.jpg">
+		</div>
     </div>
 `;
 

@@ -95,7 +95,7 @@ header {
 	text-decoration: underline;
 }
 .navigation{
-	background-color:#000000;
+	background-color:#131313;
 	height:50px;
 	position: relative;
 }
@@ -111,7 +111,7 @@ header {
 	align-items: center;
 	margin:0;
 	padding:0;
-	color:var(--base-background-color);
+	color:#a4a4a4;
 	height:100%;
 }
 .navigation > nav > ul > li{
@@ -221,7 +221,7 @@ header {
 	width:1300px;
 	height:80px;
 	border-radius:0 0 50px 50px;
-	background-color: #000000;
+	background-color: #131313;
 	display: flex;
 	justify-content: center;
 	align-items: flex-end;
@@ -304,7 +304,7 @@ i.fa-solid.fa-xmark.fa-beat:hover{
 }
 
 .main-layout-block-1200.random{
-	border-bottom:1px solid #dcdcdc;
+	border-bottom:1px solid #3b3b3b;
 	padding-bottom:30px;
 }
 
@@ -329,7 +329,7 @@ i.fa-solid.fa-xmark.fa-beat:hover{
 .all-items-list > section{
 	width:230px;
 	height:300px;
-	border:1px solid #dcdcdc;
+	border:1px solid #3b3b3b;
 	margin:10px 0;
 	border-radius:10px;
 	display:flex;
@@ -353,7 +353,6 @@ i.fa-solid.fa-xmark.fa-beat:hover{
 	margin: 10px 0;
 	position: relative;
 	cursor:pointer;
-	border:1px solid #eeeeee;
 	transform-style: preserve-3d;
 }
 .search-item-list > section .item-img{
@@ -393,17 +392,18 @@ i.fa-solid.fa-xmark.fa-beat:hover{
 .category-items-list > section .item-info,
 .search-item-list > section .item-info,
 .all-items-list section .item-info{
-	border-top:1px solid #dcdcdc;
+	border-top:1px solid #3b3b3b;
 	width:210px;
 	display:flex;
 	flex-direction:column;
 	justify-content:center;
 	align-items:center;
 	padding:5px 0;
+	color:#a4a4a4;
 }
 .search-item-list > section .item-info{
 	border-color:#292929;
-	color:#979797;
+	color:#a4a4a4;
 	width:130px;
 }
 
@@ -461,7 +461,7 @@ i.fa-solid.fa-xmark.fa-beat:hover{
 	display:flex;
 	justify-content:center;
 	padding:30px 0;
-	background-color:#000000;
+	background-color:#131313;
 	border-radius:50px;
 }
 

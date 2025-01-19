@@ -1,5 +1,5 @@
 "use strict";
-const rootURL = 'http://akgi.co.kr';
+const rootURL = 'https://akgi.co.kr';
 const fetchJSON = async (url) => {
     const response = await fetch(url);
     if (!response.ok) {
@@ -134,6 +134,18 @@ const createItemHTML = (item, setMode) => {
     let itemName = item.name.length > 14 ? item.name.substring(0, 13) + '...' : item.name;
     let code = item.code;
     let itemString = JSON.stringify(item).replace(/"/g, '&quot;');
+	let servicePrice = item.servicePrice;
+	let price = item.price;
+	let setPrice = '';
+	if(authority){
+		if(authority.value === 'A' || authority.value === 'B'){
+			setPrice = `<span style="color:var(--bs-gray-500);">${getCurrentMony(price)}</span> -> <b style="color:var(--bs-danger); font-size:1.1rem;">${getCurrentMony(servicePrice)}</b>`;
+		}else{
+			setPrice = `${getCurrentMony(price)}`;
+		}
+	}else{
+		setPrice = `${getCurrentMony(price)}`;
+	}
 	if(setMode === 'all'){
 		return `
 			<section data-code="${code}" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="${item.name}">
@@ -143,7 +155,7 @@ const createItemHTML = (item, setMode) => {
 				</section>
 				<section class="item-info">
 					<article>${itemName}</article>
-					<article>${getCurrentMony(item.price)}</article>
+					<article>${setPrice}</article>
 				</section>
 			</section>
 		`;
@@ -156,7 +168,7 @@ const createItemHTML = (item, setMode) => {
 				</section>
 				<section class="item-info">
 					<article>${itemName}</article>
-					<article>${getCurrentMony(item.price)}</article>
+					<article>${setPrice}</article>
 				</section>
 			</section>
 		`;

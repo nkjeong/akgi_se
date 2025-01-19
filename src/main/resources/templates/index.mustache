@@ -36,6 +36,9 @@
 	    		</section>
 	    		<section class="member">
 					{{#user}}
+		    			<input type="hidden" value="loginOk" name="isLogin" class="isLogin">
+		    			<input type="hidden" value="{{authority}}" name="authority" class="authority">
+						<section class="admin" title="관리자" data-evt="admin" style="display:none;">admin</section>
 						<section class="member-id" title="환영합니다." data-evt="member-info">{{userId}}</section>
 						<section 
 							class="member-modify" 
@@ -45,8 +48,6 @@
 							정보수정
 						</section>
 		    			<section class="member-logout" title="로그아웃" onclick="location.href='/logout';">로그아웃</section>
-		    			<input type="hidden" value="loginOk" name="isLogin" class="isLogin">
-		    			<input type="hidden" value="{{authority}}" name="authority" class="authority">
 					{{/user}}
 					{{^user}}
 		    			<section class="member-join" title="회원가입" data-evt="join">회원가입</section>
@@ -271,6 +272,7 @@
     <script src="/js/img3Daction.js"></script>
     <script src="/js/modal.js"></script>
   <script>
+  /*
     const container = document.querySelector('.main-layout-block-full.main-top');
     const containerWidth = container.offsetWidth;
     const containerHeight = container.offsetHeight;
@@ -307,6 +309,7 @@
 
       return circle;
     };
+    */
 
     for (let i = 0; i < 50; i++) {
       const circle = createRandomCircle();

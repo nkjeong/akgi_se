@@ -1,7 +1,7 @@
 @charset "UTF-8";
 :root{
 	--base-color:#ffffff;
-	--base-background-color:#F8FAFC;
+	--base-background-color:#000000;
 	--base-box-color:#D9EAFD;
 	--base-font-color:#000000;
 	--base-font-over-color:var(--bs-danger);
