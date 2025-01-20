@@ -16,6 +16,19 @@
     <title>대광악사 :: GRANSEN</title>
 </head>
 <body>
+	<section class="blind-top">
+		<section class="blind-close">
+			<i class="fa-solid fa-xmark fa-beat"></i>
+		</section>
+		<section class="blind-in-top">
+			<section class="in-img"></section>
+		</section>
+	</section>
+	<section class="blind-bottom">
+		<section class="blind-in-bottom">
+			<section class="in-img"></section>
+		</section>
+	</section>
 	<section class="new-modal">
 		<section class="content-box">
 			<section class="scrollable-content">
@@ -130,15 +143,15 @@
 			<section class="banner_02"><img src="/images/banner/banner_02.jpg"></section>
     	</section>
     	<section class="main-layout-block-1200" style="position:relative; height:250px;">
-    		<section style="width:100px; z-index:50; height:100px; border-radius:50%; background-color:#000000; position:absolute; left: 50%; transform: translateX(-50%) translateY(0);display:flex; justify-content: center; align-items: center;">
+    		<section style="width:100px; z-index:50; height:100px; border-radius:50%; background-color:#131313; position:absolute; left: 50%; transform: translateX(-50%) translateY(0);display:flex; justify-content: center; align-items: center;">
     			<img style="width:45px; cursor:pointer;" src="/images/logo_03.png" title="홈" onclick="location.href='/'">
     		</section>
-    		<section style="width:70px; z-index:40; height:70px; border-radius:50%; background-color:#000000; position:absolute; left: 50%; transform: translateX(-50%) translateY(60px);"></section>
-    		<section style="width:40px; height:40px; border-radius:50%; background-color:#000000; position:absolute; left: 50%; transform: translateX(-50%) translateY(110px);"></section>
-    		<section style="width:25px; height:25px; border-radius:50%; background-color:#000000; position:absolute; left: 50%; transform: translateX(-50%) translateY(140px);"></section>
-    		<section style="width:50px; height:50px; border-radius:50%; background-color:#000000; position:absolute; left: 50%; transform: translateX(-50%) translateY(160px);"></section>
-    		<section style="width:20px; height:20px; border-radius:50%; background-color:#000000; position:absolute; left: 50%; transform: translateX(-50%) translateY(215px);"></section>
-    		<section style="width:10px; height:10px; border-radius:50%; background-color:#000000; position:absolute; left: 50%; transform: translateX(-50%) translateY(240px);"></section>
+    		<section style="width:70px; z-index:40; height:70px; border-radius:50%; background-color:#131313; position:absolute; left: 50%; transform: translateX(-50%) translateY(60px);"></section>
+    		<section style="width:40px; height:40px; border-radius:50%; background-color:#131313; position:absolute; left: 50%; transform: translateX(-50%) translateY(110px);"></section>
+    		<section style="width:25px; height:25px; border-radius:50%; background-color:#131313; position:absolute; left: 50%; transform: translateX(-50%) translateY(140px);"></section>
+    		<section style="width:50px; height:50px; border-radius:50%; background-color:#131313; position:absolute; left: 50%; transform: translateX(-50%) translateY(160px);"></section>
+    		<section style="width:20px; height:20px; border-radius:50%; background-color:#131313; position:absolute; left: 50%; transform: translateX(-50%) translateY(215px);"></section>
+    		<section style="width:10px; height:10px; border-radius:50%; background-color:#131313; position:absolute; left: 50%; transform: translateX(-50%) translateY(240px);"></section>
     	</section>
     	<section class="main-layout-block-1200 action-banner_02">
 			<div class="container" id="categoryItemList">
@@ -176,10 +189,9 @@
     			<!-- category item click fn => html code -->
     		</section>
     	</section>
-    	<section class="main-layout-block-full main-banner" style="margin:0;">
-    	</section>
+    	<section class="main-layout-block-full main-banner" style="margin:0;"></section>
     	
-    	<section class="main-layout-block-full" style="background-image:url(/images/banner/banner_03.jpg); background-size:cover; padding:30px 0;">
+    	<section class="main-layout-block-full" style="padding:30px 0;">
     		<section class="line-items"></section>
     		<section class="text-banner_01">Gransenis a musical instrument store that manufactures, sells, and repairs instruments ranging from beginner instruments to professional instruments.</section>
     	</section>
@@ -198,6 +210,12 @@
     	<section class="main-layout-block-full all">
     		<section><span class="main-block-title"></span></section>
     		<section class="all-items-list item-list"></section>
+    	</section>
+    	<!--<section class="main-layout-block-full main-banner-01" style="margin:0;"></section>-->
+    	<section class="main-layout-block-full main-banner-02" style="margin:0;">
+    		<span>DAEGWANGAKGISA Musical Instrument Specialty Brand</span>
+    		<br>
+    		- GRANSEN -
     	</section>
     </section>
     <section class="footer">
@@ -309,13 +327,50 @@
 
       return circle;
     };
-    */
+    
 
     for (let i = 0; i < 50; i++) {
       const circle = createRandomCircle();
       const firstChild = container.firstChild; // 현재 container의 첫 번째 자식 요소
       container.insertBefore(circle, firstChild); // 첫 번째 자식 앞에 circle 삽입
     }
+    */
+    
+    const actionBanner02Btn = document.querySelectorAll('.action-banner_02 .container img');
+    const blindTop = document.querySelector('.blind-top');
+    const blindBottom = document.querySelector('.blind-bottom');
+    
+    let blindTopH = blindTop.getBoundingClientRect().height;
+    let blindBottomH = blindBottom.getBoundingClientRect().height;
+    
+	window.addEventListener('scroll', () => {
+	    scroll_y_2 = window.scrollY; // 또는 window.pageYOffset
+	    blindBottom.style.bottom = `-${scroll_y_2+blindBottomH}px`;
+	    blindTop.style.top = `${scroll_y_2-blindTopH}px`;
+	});
+    actionBanner02Btn.forEach((btns)=>{
+    	btns.addEventListener('click', (btn)=>{
+    		const blindTopInImg = blindTop.querySelector('.in-img');
+    		const blindBottomInImg = blindBottom.querySelector('.in-img');
+    		blindTopInImg.innerHTML = `<img src="${btn.currentTarget.getAttribute('src')}">`;
+    		blindBottomInImg.innerHTML = `<img src="${btn.currentTarget.getAttribute('src')}">`;
+    		
+    		blindTop.style.top = `${scroll_y}px`;
+    		blindBottom.style.bottom = `-${scroll_y}px`;
+    		blindTop.style.opacity = `1`;
+    		blindBottom.style.opacity = `1`;
+    		document.body.style.overflow = 'hidden';
+    	});
+    });
+    
+    const blindClose = document.querySelector('.blind-close i');
+    blindClose.addEventListener('click', (btn)=>{
+    	blindTop.style.top = `-${scroll_y}px`;
+    	blindBottom.style.bottom = `-${scroll_y*2}px`;
+    	blindTop.style.opacity = `0`;
+		blindBottom.style.opacity = `0`;
+		document.body.style.overflow = 'scroll';
+    });
   </script>
 </body>
 </html>

@@ -1,6 +1,7 @@
 @charset "UTF-8";
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
 *{
 	margin:0;
 	padding:0;
@@ -24,15 +25,16 @@ header {
     left: 0;
     width: 100%;
     z-index: 1000; /* 다른 요소들 위에 고정되도록 */
-    background-color: white; /* 배경색 지정 (투명도를 없애기 위해) */
+    background-color: #000000; /* 배경색 지정 (투명도를 없애기 위해) */
     box-shadow: 0 0 20px rgba(0,0,0,0.4);
 }
 
 .header{
-	height:80px;
+	height:120px;
 	display:flex;
 	justify-content: center;
 	align-items:center;
+	color:#a4a4a4;
 }
 
 .header > section{
@@ -67,8 +69,8 @@ header {
 }
 .header > section .search form .search{
 	all:unset;
-	border:1px solid var(--base-line-color);
-	background-color:var(--base-color);
+ 	border:1px solid #292929;
+	background-color:#131313;
 	width:80%;
 	height:35px;
 	padding:0 10px;
@@ -95,7 +97,7 @@ header {
 	text-decoration: underline;
 }
 .navigation{
-	background-color:#131313;
+	background-color:#212121;
 	height:50px;
 	position: relative;
 }
@@ -134,7 +136,7 @@ header {
 	visibility: hidden;
     opacity: 0;
 	z-index: 500;
-	background-color: var(--base-box-line-color);
+	background-color: #131313;
     width: max-content;
     top: 40px;
     box-shadow: 10px 10px 10px rgba(0,0,0,0.2);
@@ -151,6 +153,9 @@ header {
 
 .navigation article.sub-menu ul li:not(:last-child){
 	border-bottom:1px solid #000000;
+}
+.navigation article.sub-menu ul li:first-child{
+	border-radius: 10px 10px 0 0;
 }
 .navigation article.sub-menu ul li:last-child{
 	border-radius: 0 0 10px 10px;
@@ -221,7 +226,7 @@ header {
 	width:1300px;
 	height:80px;
 	border-radius:0 0 50px 50px;
-	background-color: #131313;
+	background-color: #212121;
 	display: flex;
 	justify-content: center;
 	align-items: flex-end;
@@ -231,26 +236,25 @@ header {
 
 .text-eff-nav:before{
 	content:"Experience the perfect sound and luxurious melody created by the hands of a master craftsman at Gransen.";
-	font-family: 'Dancing Script', serif;
-	font-size:1.5rem;
-	font-weight:700;
+	/* font-family: 'Dancing Script', serif; */
+	font-size:1.0rem;
 	color:#626262;
-	opacity: 0; /* 기본적으로 숨김 상태 */
-    animation: fadeEffect 5s infinite; /* 10초 간격으로 반복 */
+	opacity: 1; /* 기본적으로 숨김 상태 */
+    /* animation: fadeEffect 5s infinite; */ /* 10초 간격으로 반복 */
 }
 
 /* 애니메이션 정의 */
-@keyframes fadeEffect {
-    0%, 20% { /* 처음과 초반 구간은 숨김 상태 */
+/* @keyframes fadeEffect {
+    0%, 20% {
         opacity: 0;
     }
-    40%, 80% { /* 중간 구간은 표시 상태 */
+    40%, 80% {
         opacity: 1;
     }
-    100% { /* 마지막 구간은 다시 숨김 상태 */
+    100% {
         opacity: 0;
     }
-}
+} */
 
 i.fa-solid.fa-xmark.fa-beat{
 	cursor: pointer;
@@ -261,9 +265,9 @@ i.fa-solid.fa-xmark.fa-beat:hover{
 }
 
 .main{
-	margin-top:130px;
+	margin-top:200px;
 	flex:1;
-	padding:1px 0 20px 0;
+	padding:0;
 }
 
 .main-top{
@@ -273,7 +277,8 @@ i.fa-solid.fa-xmark.fa-beat:hover{
 	align-items: center;
 	position: relative;
     overflow: hidden;
-    box-shadow: 0 0 20px rgba(0,0,0,0.4);
+    border-bottom : 1px solid #212121;
+    box-shadow: 0 0 20px rgba(33,33,33,1.0);
 }
 
 .circle {
@@ -329,7 +334,7 @@ i.fa-solid.fa-xmark.fa-beat:hover{
 .all-items-list > section{
 	width:230px;
 	height:300px;
-	border:1px solid #3b3b3b;
+	border:1px solid #2c2c2c;
 	margin:10px 0;
 	border-radius:10px;
 	display:flex;
@@ -424,8 +429,8 @@ i.fa-solid.fa-xmark.fa-beat:hover{
 .main-layout-block-1200.random > section:first-child > span,
 .main-layout-block-1200.cate > section:first-child > span{
 	padding:10px 20px;
-	background-color:#000000;
-	color:#626262;
+	background-color:#131313;
+	color:#a4a4a4;
 	border-radius:20px;
 	margin:30px 0;
 }
@@ -438,13 +443,33 @@ i.fa-solid.fa-xmark.fa-beat:hover{
 	border-radius: 20px;
 }
 
-.main-layout-block-full.main-banner{
+.main-layout-block-full.main-banner,
+.main-layout-block-full.main-banner-01{
 	height:350px;
-	background-image:url(/images/banner/banner_01.jpg);
 	background-size: cover;
 	position: relative;
 	display: flex;
     justify-content: center;
+}
+
+.main-layout-block-full.main-banner{
+	background-image:url(/images/banner/banner_01.jpg);
+}
+.main-layout-block-full.main-banner-01{
+	background-image:url(/images/banner/banner_04.jpg);
+}
+.main-layout-block-full.main-banner-02 > span {
+  font-family: "Permanent Marker", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.main-layout-block-full.main-banner-02{
+	padding:20px 0;
+	font-size:2.0rem;
+	font-family: 'Dancing Script', serif;
+	color:#ffffff;
+	font-weight:700;
+	text-align:center;
 }
 
 .main-layout-block-full.main-banner:before{
@@ -517,12 +542,13 @@ i.fa-solid.fa-xmark.fa-beat:hover{
 	padding:0 10px;
 }
 .main-layout-block-full .text-banner_01{
-	font-family: 'Dancing Script', serif;
+	/* font-family: 'Dancing Script', serif; */
 	color:#acacac;
-	font-size:2.3rem;
+	font-size:1.0rem;
 	display: flex;
 	justify-content: center;
-	align-items: center;
+	font-weight: 100;
+    padding-top: 20px;
 }
 
 .main-layout-block-full .line-items > .line-banner{
@@ -536,7 +562,7 @@ i.fa-solid.fa-xmark.fa-beat:hover{
 	display:flex;
 	justify-content:center;
 	align-items: center;
-	color:#ffffff;
+	color:#626262;
 }
 .main-layout-block-full .line-items > .line-banner-dot:last-child{
 	display: none;
@@ -549,9 +575,10 @@ i.fa-solid.fa-xmark.fa-beat:hover{
 .footer{
 	display:flex;
 	justify-content: center;
-	border-top:1px solid var(--base-line-color);
+	border-top:1px solid #3b3b3b;
 	padding-top:30px;
 	padding-bottom:30px;
+	color:#a4a4a4;
 }
 
 .footer-logo > section{
@@ -559,7 +586,7 @@ i.fa-solid.fa-xmark.fa-beat:hover{
 }
 
 section.footer > section:not(:first-child) > section:first-child{
-	border-bottom:1px solid var(--base-line-color);
+	border-bottom:1px solid #3b3b3b;
 	font-weight:700;
 	padding-left:10px;
 	font-size:1.0rem;
@@ -582,6 +609,93 @@ section.footer > section:not(:last-child){
 .rep-image.loaded {
     opacity: 1;
 }
+
+.blind-top, .blind-bottom{
+	height:50%;
+	width:100%;
+	position: absolute;
+	background-color: #000000;
+	z-index: 2000;
+	overflow: hidden;
+}
+.blind-top{
+	top:-200%;
+	transition:0.5s;
+	opacity: 0;
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+}
+.blind-bottom{
+	bottom:-200%;
+	transition:0.5s;
+	opacity: 0;
+	display: flex;
+	justify-content: center;
+}
+.blind-in-top{
+	width:1000px;
+	height:200px;
+	border:1px solid #212121;
+	border-bottom:0;
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+	position: relative;
+}
+
+.blind-in-bottom{
+	width:1000px;
+	height:200px;
+	border:1px solid #212121;
+	border-top:0;
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+}
+
+.blind-in-top .in-img, .blind-in-bottom .in-img{
+	width:300px;
+	height:150px;
+	border:1px solid #212121;
+}
+
+.blind-in-top .in-img{
+	border-bottom:0;
+}
+
+.blind-in-bottom .in-img{
+	border-top:0;
+}
+
+.blind-in-top .in-img img,
+.blind-in-bottom .in-img img{
+	width:100%;
+}
+
+.blind-in-top .in-img img{
+	border-radius: 10px 10px 0 0;
+}
+
+.blind-in-bottom .in-img img{
+	transform:translateY(-50%);
+	border-radius: 0 0 10px 10px;
+}
+
+.blind-close{
+	position: absolute;
+	height:50px;
+	width:100%;
+	display: flex;
+	justify-content: flex-end;
+	align-items:center;
+	top:0;
+}
+
+.blind-close i{
+	margin-right:50px;
+}
+
 @media (min-width: 576px) {
     .modal-dialog {
         max-width: 1000px;

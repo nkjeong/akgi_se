@@ -221,7 +221,7 @@ const setHTMLdata = (data, ele, limited, setMode) => {//서브카테고리 상�
 const setLineItems = async ()=>{
 	const lineItems = document.querySelector('.line-items');
 	let setHTML = ''
-	const directoryPath = 'C:/Users/abidan/git/repository/web/src/main/resources/static/images/banner/line_items';
+	const directoryPath = '/web/akgiwebapp/src/main/resources/static/images/banner/line_items';
 	try {
         const response = await fetch(`/api/files/list?directoryPath=${encodeURIComponent(directoryPath)}`);
         const data = await response.json();

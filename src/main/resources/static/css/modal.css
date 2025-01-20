@@ -5,7 +5,7 @@
 	position: absolute;
 	top: 0;
 	left: 0;
-	background-color: rgba(0, 0, 0, 0.8);
+	background-color: rgba(0, 0, 0, 0.9);
 	width: 100%;
 	height: 100%;
 	z-index: 1500;
@@ -28,15 +28,31 @@
 	transform: translate(-50%, -100%); /* X와 Y 방향 모두 설정 */
 	width: 1200px;
 	height:80%;
-	background-color: #ffffff;
 	border-radius: 10px;
 	box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
 	transition: transform 0.5s cubic-bezier(0, 0.55, 0.45, 1);
 	overflow: hidden; /* 스크롤바 숨김 */
-	background-color: #000000;
+	background-color: #131313;
 	display: flex;
     flex-direction: column;
+    border:1px solid #222222;
 }
+
+.form-control{
+	background-color: #222222;
+	border-color:#000000;
+	color:#626262;
+}
+
+.input-group-text{
+	border-color:#000000;
+	background-color: #222222;
+	color:#626262;
+}
+.form-floating>label{
+	color:#626262;
+}
+
 .re-size-content-box-detail{
 	height:95%;
 	width: 900px;
@@ -54,7 +70,6 @@
 	overflow-x: hidden; /* 가로 스크롤 숨김 */
 	scrollbar-width: none; /* Firefox에서 스크롤바 숨김 */
 	-webkit-overflow-scrolling: touch; /* 부드러운 스크롤 */
-	background-color: #ffffff;
 	flex: 1;
 	display: flex;
     flex-direction: column;
@@ -69,7 +84,7 @@
 }
 
 .modal-info{
-	border-bottom:1px solid #eeeeee;
+	border-bottom:1px solid #222222;
 }
 
 .modal-title, .modal-close{
@@ -81,18 +96,19 @@
 .modal-close{
 	display:flex;
 	justify-content: flex-end;
-	border-bottom: 1px solid #626262;
+	border-bottom: 1px solid #222222;
 }
 .modal-title{
-	color: #000000;
-	background-color: #ffffff;
+	color: #626262;
+	border-bottom: 1px solid #222222;
 }
 .member-msg{
-	border:1px solid #a3cfbb;
+	border:1px solid #222222;
 	border-radius: 5px;
-	background-color: #d1e7dd;
+	background-color: #000000;
 	padding:10px;
 	flex: 1;
+	color:#626262;
 }
 .join-btns{
 	height:70px;
@@ -109,33 +125,49 @@
 	width:100%;
 	margin:0;
 	border:0;
+	border-radius:10px;
 }
 .item-info{
 	height:400px;
 	display:flex;
 	align-items: center;
+	padding:20px;
 }
 .item-info > section:first-child{
-	width:380px;
-	height:380px;
+	width:360px;
+	height:360px;
 	margin-right:10px;
 }
 .item-info > section:last-child{
 	flex:1;
 	height:100%;
-	padding:10px;
 }
 .item-info > section:last-child > section{
-	border:1px solid #626262;
+	border:1px solid #222222;
 	color:#626262;
 	height:100%;
 	width:100%;
 	border-radius: 10px;
 	padding:10px;
+	background-color: #000000;
+}
+
+.item-info > section:last-child > section > section{
+	display:flex;
+	padding:5px;
+}
+
+.item-info > section:last-child > section > section >section:first-child{
+	width:70px;
+}
+
+.item-info > section:last-child > section > section >section:last-child{
+	padding-left:10px;
 }
 
 .item-info img{
 	width:100%;
+	border-radius:10px;
 }
 
 .login-form-wrapper button[type="submit"]{

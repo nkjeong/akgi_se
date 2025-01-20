@@ -22,7 +22,7 @@ const openModal = (title, contentSetter, e) => {
     const contentBox = document.querySelector('.content-box');
 
     modalElement.style.top = `${scroll_y}px`;
-
+	console.log(scroll_y)
     // 기존 모달 제목 제거
     const existingTitle = contentBox.querySelector('.modal-info');
     if (existingTitle) existingTitle.remove();
@@ -37,6 +37,12 @@ const openModal = (title, contentSetter, e) => {
 	if(e.dataset.evt === 'img-detail'){
 		const itemLine = e.dataset.item.replace(/&quot;/g, '"');
 		const item = JSON.parse(itemLine);
+		let sPrice = '0';
+		if(isLogin){
+			sPrice = `<b style="color:#dc3545;">${getCurrentMony(item.servicePrice)}</b>`;
+		}else{
+			sPrice = sPrice + '[로그인 후 볼 수 있습니다.]';
+		}
 		modalTitle.innerHTML += `
 			<section class="item-info">
 				<section><img src="${rootURL}/images/1000/gransen_${item.code}.jpg"></section>
@@ -44,11 +50,39 @@ const openModal = (title, contentSetter, e) => {
 					<section>
 						<section>
 							<section>소비자가</section>
-							<section></section>
+							<section>${getCurrentMony(item.price)}</section>
 						</section>
 						<section>
 							<section>공급가</section>
-							<section></section>
+							<section>${sPrice}</section>
+						</section>
+						<section>
+							<section>상품코드</section>
+							<section>${item.code}</section>
+						</section>
+						<section>
+							<section>규격</section>
+							<section>${item.massage}</section>
+						</section>
+						<section>
+							<section>사이즈</section>
+							<section>${item.size}</section>
+						</section>
+						<section>
+							<section>품번</section>
+							<section>${item.itemNumber}</section>
+						</section>
+						<section>
+							<section>원산지</section>
+							<section>${item.origin}</section>
+						</section>
+						<section>
+							<section>등록일</section>
+							<section>${item.regDate}</section>
+						</section>
+						<section>
+							<section>옵션</section>
+							<section>${item.option}</section>
 						</section>
 					</section>
 				</section>
