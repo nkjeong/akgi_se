@@ -17,7 +17,7 @@ window.addEventListener('scroll', () => {
 });
 
 // 공통 함수: 모달 열기
-const openModal = (title, contentSetter, e) => {
+const openModal = async (title, contentSetter, e) => {
     const modalElement = document.querySelector('.new-modal');
     const contentBox = document.querySelector('.content-box');
 
@@ -38,14 +38,28 @@ const openModal = (title, contentSetter, e) => {
 		const itemLine = e.dataset.item.replace(/&quot;/g, '"');
 		const item = JSON.parse(itemLine);
 		let sPrice = '0';
+		const code = item.code;
+		
 		if(isLogin){
 			sPrice = `<b style="color:#dc3545;">${getCurrentMony(item.servicePrice)}</b>`;
 		}else{
-			sPrice = sPrice + '[로그인 후 볼 수 있습니다.]';
+			sPrice = sPrice + ' [로그인 후 볼 수 있습니다.]';
+		}
+		const option = item.option;
+		let optionValue = '';
+		if(option === 'N'){
+			optionValue = '옵션없음';
+		}else{
+			const fetchedOption = await fetchOptionByCode(code);
+			if (fetchedOption) {
+	            optionValue = fetchedOption.value;
+	        } else {
+	            console.log('Option not found');
+	        }
 		}
 		modalTitle.innerHTML += `
 			<section class="item-info">
-				<section><img src="${rootURL}/images/1000/gransen_${item.code}.jpg"></section>
+				<section><img src="${rootURL}/images/1000/gransen_${code}.jpg"></section>
 				<section>
 					<section>
 						<section>
@@ -82,7 +96,11 @@ const openModal = (title, contentSetter, e) => {
 						</section>
 						<section>
 							<section>옵션</section>
-							<section>${item.option}</section>
+							<section>${option}</section>
+						</section>
+						<section>
+							<section>옵션값</section>
+							<section>${optionValue}</section>
 						</section>
 					</section>
 				</section>
@@ -150,6 +168,27 @@ const openModal = (title, contentSetter, e) => {
 		getForm.userId.setAttribute('readonly', true);
 	}
 };
+
+const fetchOptionByCode = async (code) => {
+	const url = `/api/options/${code}`;
+	try {
+	    const response = await fetch(url, {
+	        method: 'GET',
+	        headers: {
+	            'Content-Type': 'application/json',
+	        },
+	    });
+
+	    if (!response.ok) {
+	        throw new Error(`HTTP error! status: ${response.status}`);
+	    }
+
+	    const option = await response.json();
+	    return option;
+	} catch (error) {
+	    console.error('Error fetching option:', error);
+	}
+}
 
 // 공통 함수: 모달 닫기
 const closeModal = (modalElement, modalTitle, contentBox) => {
