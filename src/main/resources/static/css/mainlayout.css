@@ -475,10 +475,14 @@ i.fa-solid.fa-xmark.fa-beat:hover{
 .main-layout-block-full.main-banner:before{
 	content:"ONE STOP SERVICE 대광악기사 악기 전문 브랜드 GRANSEN ";
 	position: absolute;
-	line-height: 350px;
 	color:#ffffff;
 	font-size:3.5rem;
 	font-weight:700;
+	height: 100%;
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+    text-align: center;
 }
 
 .main-layout-block-1200.action-banner,
@@ -488,6 +492,7 @@ i.fa-solid.fa-xmark.fa-beat:hover{
 	padding:30px 0;
 	background-color:#131313;
 	border-radius:50px;
+	flex-wrap: wrap;
 }
 
 .action-banner_02{
@@ -700,4 +705,50 @@ section.footer > section:not(:last-child){
     .modal-dialog {
         max-width: 1000px;
     }
+}
+@media (max-width: 1200px) {
+	.main-top{
+		width:100%;
+		flex-wrap: wrap;
+		height: max-content;
+		padding-top:20px;
+	}
+	.main-layout-block-1200.random{
+		width:100%;
+	}
+	.main-layout-block-1200.action-banner{
+		width:100%;
+	}
+	.main-layout-block-1200.action-banner_02{
+		display: none;
+	}
+	.main-layout-block-full.main-banner:before{
+		font-size: 2.0rem;
+	}
+	.category-items-list, .search-item-list, .all-items-list{
+		justify-content: space-around;
+	}
+	.category-items-list > section, .search-item-list > section, .all-items-list > section{
+		width:200px;
+	}
+	.category-items-list > section .item-img, .search-item-list > section .item-img, .all-items-list > section .item-img{
+		width:190px;
+	}
+	.category-items-list > section .item-info, .search-item-list > section .item-info, .all-items-list section .item-info{
+		width:100%;
+	}
+	.main-layout-block-1200{
+		width:100%;
+	}
+	.all-items-list{
+		padding:20px 0;
+	}
+	.main-layout-block-1200 > .banner_02{
+		width:100%;
+	}
+	.item-info{
+		flex-wrap: wrap;
+		height: auto;
+		justify-content: center;
+	}
 }

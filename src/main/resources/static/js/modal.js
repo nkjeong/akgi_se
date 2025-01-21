@@ -31,8 +31,7 @@ const openModal = async (title, contentSetter, e) => {
     const modalTitle = document.createElement('section');
     modalTitle.setAttribute('class', 'modal-info');
     modalTitle.innerHTML = `
-        <section class="modal-close"><i class="fa-solid fa-xmark fa-beat"></i></section>
-        <section class="modal-title"><span>${title}</span></section>
+        <section class="modal-close modal-title"><span>${title}</span> <i class="fa-solid fa-xmark fa-beat"></i></section>
     `;
 	if(e.dataset.evt === 'img-detail'){
 		const itemLine = e.dataset.item.replace(/&quot;/g, '"');

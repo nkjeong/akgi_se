@@ -22,7 +22,7 @@
 }
 
 .content-box {
-	margin: 20px 0;
+	margin: 0;
 	position: absolute;
 	left: 50%;
 	transform: translate(-50%, -100%); /* X와 Y 방향 모두 설정 */
@@ -54,8 +54,8 @@
 }
 
 .re-size-content-box-detail{
-	height:95%;
-	width: 900px;
+	height:100%;
+	width: 500px;
 }
 .re-size-content-box-login{
 	height:400px;
@@ -90,17 +90,16 @@
 .modal-title, .modal-close{
 	font-weight:700;
 	font-size:1.2rem;
-	padding:20px 20px;;
+	padding:20px 20px;
 }
 
 .modal-close{
 	display:flex;
-	justify-content: flex-end;
+	justify-content: space-between;
 	border-bottom: 1px solid #222222;
 }
 .modal-title{
 	color: #626262;
-	border-bottom: 1px solid #222222;
 }
 .member-msg{
 	border:1px solid #222222;
@@ -134,8 +133,8 @@
 	padding:20px;
 }
 .item-info > section:first-child{
-	width:360px;
-	height:360px;
+	width:200px;
+	height:200px;
 	margin-right:10px;
 }
 .item-info > section:last-child{
