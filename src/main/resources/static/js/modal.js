@@ -42,7 +42,7 @@ const openModal = async (title, contentSetter, e) => {
 		if(isLogin){
 			sPrice = `<b style="color:#dc3545;">${getCurrentMony(item.servicePrice)}</b>`;
 		}else{
-			sPrice = sPrice + ' [로그인 후 볼 수 있습니다.]';
+			sPrice = sPrice + ' [login info]';
 		}
 		const option = item.option;
 		let optionValue = '';
@@ -73,7 +73,7 @@ const openModal = async (title, contentSetter, e) => {
 							<section>상품코드</section>
 							<section>${item.code}</section>
 						</section>
-						<section>
+						<!--<section>
 							<section>규격</section>
 							<section>${item.massage}</section>
 						</section>
@@ -84,15 +84,15 @@ const openModal = async (title, contentSetter, e) => {
 						<section>
 							<section>품번</section>
 							<section>${item.itemNumber}</section>
-						</section>
+						</section>-->
 						<section>
 							<section>원산지</section>
 							<section>${item.origin}</section>
 						</section>
-						<section>
+						<!--<section>
 							<section>등록일</section>
 							<section>${item.regDate}</section>
-						</section>
+						</section>-->
 						<section>
 							<section>옵션</section>
 							<section>${option}</section>

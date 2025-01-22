@@ -1,6 +1,7 @@
 @charset "UTF-8";
 
 .new-modal {
+	padding:20px 0;
 	display: flex;
 	position: absolute;
 	top: 0;
@@ -117,7 +118,7 @@
 
 .login-form-wrapper{
 	width:500px;
-	margin:0 auto;
+	margin:20px auto;
 }
 
 .item-detail img{
@@ -127,9 +128,9 @@
 	border-radius:10px;
 }
 .item-info{
-	height:400px;
+	height:auto;
 	display:flex;
-	align-items: center;
+	align-items: flex-start;
 	padding:20px;
 }
 .item-info > section:first-child{
@@ -153,7 +154,8 @@
 
 .item-info > section:last-child > section > section{
 	display:flex;
-	padding:5px;
+	padding:3px;
+	font-size:0.8rem;
 }
 
 .item-info > section:last-child > section > section >section:first-child{
