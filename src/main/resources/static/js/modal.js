@@ -5,9 +5,14 @@ const isLogin = document.querySelector('.isLogin');
 const authority = document.querySelector('.authority');
 
 if(authority){
-	if(authority.value === 'A'){
-		const admin = document.querySelector('.admin');
-		admin.style.display = 'block';
+	if(authority.value === 'C'){
+		alert('현재 회원님은 미승인회원 입니다.\n지금 승인 중입니다.\n잠시 후 다시 접속 바랍니다.\n만약 계속 미승인상태로 로그인이 안된다면\n02-456-2383 로 전화 바랍니다.');
+		location.href='/logout';
+	}else{
+		if(authority.value === 'A'){
+			const admin = document.querySelector('.admin');
+			admin.style.display = 'block';
+		}
 	}
 }
 
@@ -31,7 +36,7 @@ const openModal = async (title, contentSetter, e) => {
     const modalTitle = document.createElement('section');
     modalTitle.setAttribute('class', 'modal-info');
     modalTitle.innerHTML = `
-        <section class="modal-close modal-title"><span>${title}</span> <i class="fa-solid fa-xmark fa-beat"></i></section>
+        <section class="modal-close modal-title"><span>${title}</span> <div data-bs-theme="dark"><button type="button" class="btn-close fa-beat" aria-label="Close"></button></div></section>
     `;
 	if(e.dataset.evt === 'img-detail'){
 		const itemLine = e.dataset.item.replace(/&quot;/g, '"');
@@ -112,7 +117,7 @@ const openModal = async (title, contentSetter, e) => {
 		}
 
     // 닫기 버튼 이벤트 등록
-    const closeBtn = modalTitle.querySelector('.modal-close i');
+    const closeBtn = modalTitle.querySelector('.modal-close button.btn-close');
     closeBtn.addEventListener('click', () => closeModal(modalElement, modalTitle, contentBox));
 
     contentBox.prepend(modalTitle);
@@ -196,7 +201,7 @@ const closeModal = (modalElement, modalTitle, contentBox) => {
 	contentBox.classList.remove('re-size-content-box-detail');
 	contentBox.classList.remove('re-size-content-box-login');
     modalTitle.remove();
-    document.body.style.overflow = 'scroll';
+    document.body.style.overflowY = 'scroll';
 };
 
 // 모달 초기화
@@ -319,6 +324,9 @@ const setLoginForm = () => `
 // 아이템 상세 정보 HTML 생성
 const setItemDetail = (item) => `
     <div class="item-detail">
+		<div class="otherTab">
+			<a href="${rootURL}/images/detail/gransen_${item.code}.jpg" target="_blank">상세설명 다른 탭에서 보기</a>
+		</div>
         <div>
 			<img src="${rootURL}/images/detail/gransen_${item.code}.jpg">
 		</div>

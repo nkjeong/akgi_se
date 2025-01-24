@@ -196,12 +196,13 @@ header {
 }
 
 .navigation .searchWrapper .search-title{
-	font-size:2.0rem;
+	font-size:1.0rem;
 	color:#515151;
 	display: flex;
 	padding:10px;
 	border-bottom:1px solid #292929;
 	height:70px;
+	width:100%;
 }
 
 .navigation .searchWrapper .search-title > section:not(:nth-of-type(2)){
@@ -256,13 +257,13 @@ header {
     }
 } */
 
-i.fa-solid.fa-xmark.fa-beat{
+/* i.fa-solid.fa-xmark.fa-beat{
 	cursor: pointer;
 	color:var(--bs-danger);
 }
 i.fa-solid.fa-xmark.fa-beat:hover{
 	color:#515151;
-}
+} */
 
 .main{
 	margin-top:200px;
@@ -701,17 +702,27 @@ section.footer > section:not(:last-child){
 	margin-right:50px;
 }
 
+nav.mobile-nav-btn{
+	display:none;
+}
+
 @media (min-width: 576px) {
     .modal-dialog {
         max-width: 1000px;
     }
 }
 @media (max-width: 1200px) {
+	.main{
+		margin-top:200px;
+	}
 	.main-top{
 		width:100%;
 		flex-wrap: wrap;
 		height: max-content;
 		padding-top:20px;
+	}
+	.header > section{
+		width:100%;
 	}
 	.main-layout-block-1200.random{
 		width:100%;
@@ -750,5 +761,63 @@ section.footer > section:not(:last-child){
 		flex-wrap: wrap;
 		height: auto;
 		justify-content: center;
+	}
+	.navigation:before{
+		content: "Professional, trustworthy, fast, accurate, reasonable";
+        display: flex;
+        width: 100%;
+        height: 100%;
+        line-height: 50px;
+        justify-content: center;
+        font-size: 0.9rem;
+        color: #a4a4a4;
+	}
+	span.setTodate, .navigation > nav, .navigation > .text-eff-nav{
+		display: none;
+	}
+	.header > section .logo,
+	.header > section .member{
+		justify-content: center;
+	}
+	nav.mobile-nav-btn{
+		padding:10px 20px;
+		display:flex;
+	}
+	.text-eff-nav{
+		width:100%;
+	}
+	.main-layout-block-1200 > .banner_02 img{
+		width:100%;
+	}
+	.main-layout-block-full .text-banner_01{
+		text-align: center;
+	}
+	.blind-top, .blind-bottom{
+		display: none;
+	}
+	.footer{
+		flex-direction: column;
+	}
+	.navigation .searchWrapper .search-title{
+		padding:0;
+	}
+	.navigation .searchWrapper .search-title > section:last-child{
+		justify-content: flex-start;
+	}
+	.navigation .searchWrapper .search-title > section:nth-of-type(1){
+		display: none;
+	}
+	.navigation .searchWrapper .search-title > section:not(:nth-of-type(2)){
+		width:10%;
+	}
+	.navigation .searchWrapper .search-title{
+		font-size:1.3rem;
+	}
+	.navigation .searchWrapper .search-title > section{
+		align-items:center;
+	}
+	section.footer > section{
+		margin-bottom: 20px;
+		margin-left:20px;
 	}
 }

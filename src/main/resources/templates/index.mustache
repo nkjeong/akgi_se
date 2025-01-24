@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<meta name="description" content="대광악기사 종합 악기전문 브랜드 GRANSEN">
     <meta name="Title" content="대광악기사 종합 악기전문 브랜드 GRANSEN">
     <meta name="Subject" content="대광악기사 종합 악기전문 브랜드 GRANSEN">
@@ -32,9 +32,21 @@
     <title>대광악사 :: GRANSEN</title>
 </head>
 <body>
+	<div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+	  <div class="offcanvas-header">
+	    <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Backdrop with scrolling</h5>
+	    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+	  </div>
+	  <div class="offcanvas-body">
+			<div class="accordion accordion-flush" id="accordionFlushExample">
+			</div>
+	  </div>
+	</div>
 	<section class="blind-top">
 		<section class="blind-close">
-			<i class="fa-solid fa-xmark fa-beat"></i>
+			<div data-bs-theme="dark">
+			  <button type="button" class="btn-close" aria-label="Close"></button>
+			</div>
 		</section>
 		<section class="blind-in-top">
 			<section class="in-img"></section>
@@ -67,7 +79,7 @@
 					{{#user}}
 		    			<input type="hidden" value="loginOk" name="isLogin" class="isLogin">
 		    			<input type="hidden" value="{{authority}}" name="authority" class="authority">
-						<section class="admin" title="관리자" data-evt="admin" style="display:none;">admin</section>
+						<section class="admin" title="관리자" data-evt="admin" style="display:none;" onclick="location.href='/administrator/index'">admin</section>
 						<section class="member-id" title="환영합니다." data-evt="member-info">{{userId}}</section>
 						<section 
 							class="member-modify" 
@@ -95,16 +107,22 @@
 	    		<section class="search-title">
 					<section></section>
 					<section></section>
-					<section><i class="fa-solid fa-xmark fa-beat"></i></section>
+					<section>
+						<div data-bs-theme="dark">
+						  <button type="button" class="btn-close fa-beat" aria-label="Close"></button>
+						</div>
+					</section>
 	    		</section>
 	    		<section class="search-item-list"></section>
 	    	</section>
 	    	<section class="text-eff-nav"></section>
 	    </section>
+		<nav class="mobile-nav-btn">
+			<img src="/images/btn_bar.png" class="offcanvas-open">
+		</nav>
 	</header>
-	
+
     <section class="main">
-    	
     	<section class="main-layout-block-full main-top">
     		<section class="main-top-left" title="소리를 키우세요~">
 				<video width="250" controls autoplay muted style="border-radius:15px;">
@@ -379,7 +397,7 @@
     	});
     });
     
-    const blindClose = document.querySelector('.blind-close i');
+    const blindClose = document.querySelector('.blind-close button.btn-close');
     blindClose.addEventListener('click', (btn)=>{
     	blindTop.style.top = `-${scroll_y}px`;
     	blindBottom.style.bottom = `-${scroll_y*2}px`;

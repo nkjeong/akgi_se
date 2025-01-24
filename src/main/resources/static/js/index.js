@@ -10,12 +10,34 @@ const fetchJSON = async (url) => {
 
 const setCategory = (categories) => {
     const mainNavigationElement = document.querySelector('section.navigation ul');
+	const mobileNavigationElement = document.querySelector('div.accordion.accordion-flush');
     const categoryNumbers = categories.map(category => ({
         "code": category.code, 
         "name": category.name
     }));
     setCategoryNumber(categoryNumbers);//카테고리 상품 진열
-    const html = categories.map(category => `
+	
+	//모바일용 카테고리
+	const htmlMobile = categories.map((category, index) => `
+		<div class="accordion-item">
+		  <h2 class="accordion-header">
+		    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-${index}" aria-expanded="false" aria-controls="flush-${index}">
+		      ${category.name}
+		    </button>
+		  </h2>
+		  <div id="flush-${index}" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+		    <article class="accordion-body sub-menu" data-code="${category.code}">
+				<ul></ul>
+			</article>
+		  </div>
+		</div>
+	`).join('');
+	mobileNavigationElement.innerHTML = htmlMobile;
+	setSubMenus(mobileNavigationElement);
+	
+	
+	//웹용 카테고리
+    const htmlWeb = categories.map(category => `
         <li>
             <article>${category.name}</article>
             <article class="sub-menu" data-code="${category.code}">
@@ -23,7 +45,7 @@ const setCategory = (categories) => {
             </article>
         </li>
     `).join('');
-    mainNavigationElement.innerHTML = html;
+    mainNavigationElement.innerHTML = htmlWeb;
     setSubMenus(mainNavigationElement);
 };
 
@@ -46,8 +68,15 @@ const updateSubMenu = async (categoryCode, subMenuElement) => {
     getSubmenus.forEach((btns)=>{
 		btns.addEventListener('click', (btn)=>{
 			getSubItems(btn.target);
-			location.href='#categoryItemList';
-		});
+			const canvas = btn.target.closest('#offcanvasWithBothOptions');
+			if(!canvas){
+				location.href='#categoryItemList';
+			}
+			if(canvas){
+				const offcanvasInstance = bootstrap.Offcanvas.getInstance(canvas) || new bootstrap.Offcanvas(canvas);
+				offcanvasInstance.hide();
+			}
+		}, { once : true });
 	});
 }
 
@@ -258,10 +287,10 @@ const getSearchItems = () => {
 		document.body.style.overflow = 'hidden'
 	});
 	
-	const closeBtn = searchWrapper.querySelector('i.fa-solid.fa-xmark.fa-beat');
+	const closeBtn = searchWrapper.querySelector('button.btn-close');
 	closeBtn.addEventListener('click', (kw)=>{
 		searchWrapper.classList.remove('searchWrapper-action');
-		document.body.style.overflow = 'scroll';
+		document.body.style.overflowY = 'scroll';
 		keyword.value = '';
 	});
 	
@@ -295,3 +324,27 @@ const documentSize = () => {
 }
 
 
+document.querySelector('.offcanvas-open').addEventListener('click', () => {
+    const offcanvasElement = document.querySelector('#offcanvasWithBothOptions');
+    const targetElement = document.querySelector('#categoryItemList');
+
+    if (offcanvasElement && targetElement) {
+        // Bootstrap Offcanvas 인스턴스 가져오기 또는 초기화
+        const offcanvasInstance = bootstrap.Offcanvas.getInstance(offcanvasElement) || new bootstrap.Offcanvas(offcanvasElement);
+
+        // Offcanvas 열기
+        offcanvasInstance.show();
+
+        // Offcanvas가 열렸을 때 스크롤 이동 처리
+        offcanvasElement.addEventListener(
+            'shown.bs.offcanvas',
+            () => {
+                console.log('Offcanvas fully opened');
+                targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            },
+            { once: true } // 이벤트 리스너를 한 번만 실행
+        );
+    } else {
+        console.error('Offcanvas or target element not found');
+    }
+});

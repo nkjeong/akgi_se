@@ -1,0 +1,105 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+*{
+	margin:0;
+	padding:0;
+	box-sizing: border-box;
+}
+html, body{
+	height:100vh;
+}
+body{
+	display:flex;
+	flex-direction:column;
+	font-family: 'Roboto', sans-serif;
+	background-color:var(--base-background-color);
+	color:var(--base-font-color);
+	font-size:0.9rem;
+	color:#626262;
+	padding:0 50px;
+}
+
+.err{
+	width:100%;
+	height:100%;
+	display:flex;
+	flex-direction:column;
+	justify-content: center;
+	align-items: center;
+}
+
+.err > article{
+	margin:20px 0;
+	color:var(--bs-danger);
+}
+.admin-title{
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	padding:20px 0;
+	font-size:2.0rem;
+	margin:20px auto;
+	font-weight:700;
+}
+
+.admin-title > article{
+	margin:0 20px;
+}
+
+.member-list-wrapper > section{
+	display: flex;
+	padding:10px;
+	border-bottom:1px solid #626262;
+}
+.member-list-wrapper > section:first-child{
+	color:#878787;
+	font-size:1.0rem;
+	font-weight: 700;
+}
+.member-list-wrapper > section > article{
+	width:100px;
+}
+.member-list-wrapper > section > article.userId,
+.member-list-wrapper > section > article.companyName,
+.member-list-wrapper > section > article.businessNumber{
+	width:200px;
+}
+.member-list-wrapper > section > article.userEmail{
+	width:250px;
+}
+.member-list-wrapper > section > article.companyAddr_2{
+	width:300px;
+}
+.member-list-wrapper > section > article.companyAddr_1{
+	flex:1;
+}
+.authority-C{
+	position: relative;
+	cursor: pointer;
+}
+.authority-C:hover{
+	color:#0d6efd;
+	text-decoration: underline;
+}
+.authority-C > .authority-btn{
+	position: absolute;
+	top:-50px;
+	background-color: #000000;
+	padding:15px;
+	border-radius: 5px;
+	border:1px solid #464646;
+	visibility: hidden;
+	opacity: 0;
+	color:#dc3545;
+}
+
+.authority-C:hover > .authority-btn{
+	visibility: visible;
+	opacity: 1;
+}
+.authority-btn:hover{
+	color:#0d6efd;
+	text-decoration: underline;
+}
