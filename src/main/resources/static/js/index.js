@@ -19,9 +19,9 @@ const setCategory = (categories) => {
 	
 	//모바일용 카테고리
 	const htmlMobile = categories.map((category, index) => `
-		<div class="accordion-item">
+		<div class="accordion-item first-category-wrapper">
 		  <h2 class="accordion-header">
-		    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-${index}" aria-expanded="false" aria-controls="flush-${index}">
+		    <button class="accordion-button collapsed first-category" type="button" data-bs-toggle="collapse" data-bs-target="#flush-${index}" aria-expanded="false" aria-controls="flush-${index}">
 		      ${category.name}
 		    </button>
 		  </h2>
@@ -38,8 +38,8 @@ const setCategory = (categories) => {
 	
 	//웹용 카테고리
     const htmlWeb = categories.map(category => `
-        <li>
-            <article>${category.name}</article>
+        <li class="first-category-wrapper">
+            <article class="first-category">${category.name}</article>
             <article class="sub-menu" data-code="${category.code}">
                 <ul></ul>
             </article>
@@ -69,19 +69,19 @@ const updateSubMenu = async (categoryCode, subMenuElement) => {
 		btns.addEventListener('click', (btn)=>{
 			getSubItems(btn.target);
 			const canvas = btn.target.closest('#offcanvasWithBothOptions');
-			if(!canvas){
-				location.href='#categoryItemList';
-			}
 			if(canvas){
 				const offcanvasInstance = bootstrap.Offcanvas.getInstance(canvas) || new bootstrap.Offcanvas(canvas);
 				offcanvasInstance.hide();
 			}
+			const targetElement = document.querySelector('#categoryItemList');
+			targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
 		}, { once : true });
 	});
 }
 
 const getSubItems = (ele) => {
-	const firstCategoryName = ele.parentNode.parentNode.parentNode.querySelector('article:first-child').textContent;
+	const firstCategoryName = ele.closest('.first-category-wrapper').querySelector('.first-category').textContent;
+	console.log(firstCategoryName)
 	const code = ele.dataset.code+ele.dataset.subcode;
 	const menuName = '<span style="color:#e42221;">'+firstCategoryName + ' -> ' + ele.textContent+'</span>';
 	getCategoryItem(`/api/gallery/category/exact/${code}`, menuName, 'subCategory');
@@ -326,24 +326,13 @@ const documentSize = () => {
 
 document.querySelector('.offcanvas-open').addEventListener('click', () => {
     const offcanvasElement = document.querySelector('#offcanvasWithBothOptions');
-    const targetElement = document.querySelector('#categoryItemList');
 
-    if (offcanvasElement && targetElement) {
+    if (offcanvasElement) {
         // Bootstrap Offcanvas 인스턴스 가져오기 또는 초기화
         const offcanvasInstance = bootstrap.Offcanvas.getInstance(offcanvasElement) || new bootstrap.Offcanvas(offcanvasElement);
 
         // Offcanvas 열기
         offcanvasInstance.show();
-
-        // Offcanvas가 열렸을 때 스크롤 이동 처리
-        offcanvasElement.addEventListener(
-            'shown.bs.offcanvas',
-            () => {
-                console.log('Offcanvas fully opened');
-                targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            },
-            { once: true } // 이벤트 리스너를 한 번만 실행
-        );
     } else {
         console.error('Offcanvas or target element not found');
     }

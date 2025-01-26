@@ -116,6 +116,9 @@ header {
 	color:#a4a4a4;
 	height:100%;
 }
+.accordion-body.sub-menu ul{
+	list-style: none;
+}
 .navigation > nav > ul > li{
 	height:100%;
 	display: flex;
@@ -819,5 +822,8 @@ nav.mobile-nav-btn{
 	section.footer > section{
 		margin-bottom: 20px;
 		margin-left:20px;
+	}
+	.offcanvas{
+		max-width: 60%;
 	}
 }

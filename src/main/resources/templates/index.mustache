@@ -34,7 +34,7 @@
 <body>
 	<div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
 	  <div class="offcanvas-header">
-	    <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Backdrop with scrolling</h5>
+	    <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">GRANSEN Category</h5>
 	    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 	  </div>
 	  <div class="offcanvas-body">
@@ -42,7 +42,7 @@
 			</div>
 	  </div>
 	</div>
-	<section class="blind-top">
+<!-- 	<section class="blind-top">
 		<section class="blind-close">
 			<div data-bs-theme="dark">
 			  <button type="button" class="btn-close" aria-label="Close"></button>
@@ -56,7 +56,7 @@
 		<section class="blind-in-bottom">
 			<section class="in-img"></section>
 		</section>
-	</section>
+	</section> -->
 	<section class="new-modal">
 		<section class="content-box">
 			<section class="scrollable-content">
@@ -188,7 +188,7 @@
     		<section style="width:10px; height:10px; border-radius:50%; background-color:#131313; position:absolute; left: 50%; transform: translateX(-50%) translateY(240px);"></section>
     	</section>
     	<section class="main-layout-block-1200 action-banner_02">
-			<div class="container" id="categoryItemList">
+			<div class="container">
 				<img src="/images/banner/banner-effects-hover/img_1.jpg" class="img">
 				<img src="/images/banner/banner-effects-hover/img_2.jpg" class="img">
 				<img src="/images/banner/banner-effects-hover/img_3.jpg" class="img">
@@ -212,7 +212,7 @@
 			</script>
     	</section>
     	
-    	<section class="main-layout-block-1200 cate">
+    	<section class="main-layout-block-1200 cate" id="categoryItemList">
     		<section>
     			<span>
     				<span class="setItemLength"></span>
@@ -370,7 +370,7 @@
     }
     */
     
-    const actionBanner02Btn = document.querySelectorAll('.action-banner_02 .container img');
+/*     const actionBanner02Btn = document.querySelectorAll('.action-banner_02 .container img');
     const blindTop = document.querySelector('.blind-top');
     const blindBottom = document.querySelector('.blind-bottom');
     
@@ -404,7 +404,7 @@
     	blindTop.style.opacity = `0`;
 		blindBottom.style.opacity = `0`;
 		document.body.style.overflow = 'scroll';
-    });
+    }); */
   </script>
 </body>
 </html>
