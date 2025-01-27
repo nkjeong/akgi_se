@@ -111,9 +111,17 @@
 	color:#626262;
 }
 .join-btns{
-	height:70px;
+	padding: 20px 0;
 	display: flex;
 	justify-content: center;
+}
+
+.join-btns div {
+	display: flex;
+	justify-content: center;
+}
+.join-btns div input{
+	margin:0 15px;
 }
 
 .login-form-wrapper{
@@ -193,11 +201,26 @@
 	width:100%;
 }
 
+.login-failure-msg{
+	color:var(--bs-danger);
+	padding:10px;
+}
+
 @media (max-width: 1200px) {
 	.re-size-content-box-detail {
 		width:100%;
 	}
-	.content-box{
+	.login-form-wrapper{
 		width:100%;
+	}
+	.content-box{
+		width:90%;
+	}
+	.content-box input{
+		width:100%;
+	}
+	.form-floating.mb-3{
+		display: flex;
+		justify-content: center;
 	}
 }

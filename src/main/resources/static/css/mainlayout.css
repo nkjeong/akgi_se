@@ -119,6 +119,15 @@ header {
 .accordion-body.sub-menu ul{
 	list-style: none;
 }
+.accordion-body.sub-menu ul > li{
+	padding:10px 0;
+	font-size:0.95rem;
+}
+
+.accordion-body.sub-menu ul > li:not(:last-child){
+	border-bottom:1px solid #eeeeee;
+}
+
 .navigation > nav > ul > li{
 	height:100%;
 	display: flex;
