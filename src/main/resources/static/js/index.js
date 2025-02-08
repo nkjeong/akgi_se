@@ -75,7 +75,7 @@ const updateSubMenu = async (categoryCode, subMenuElement) => {
 			}
 			const targetElement = document.querySelector('#categoryItemList');
 			targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-		}, { once : true });
+		});
 	});
 }
 

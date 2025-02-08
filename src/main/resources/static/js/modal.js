@@ -27,7 +27,6 @@ const openModal = async (title, contentSetter, e) => {
     const contentBox = document.querySelector('.content-box');
 
     modalElement.style.top = `${scroll_y}px`;
-	console.log(scroll_y)
     // 기존 모달 제목 제거
     const existingTitle = contentBox.querySelector('.modal-info');
     if (existingTitle) existingTitle.remove();
@@ -119,6 +118,13 @@ const openModal = async (title, contentSetter, e) => {
     // 닫기 버튼 이벤트 등록
     const closeBtn = modalTitle.querySelector('.modal-close button.btn-close');
     closeBtn.addEventListener('click', () => closeModal(modalElement, modalTitle, contentBox));
+	
+	modalElement.addEventListener('click', (event) => {
+	    // 클릭된 요소가 modalElement 자체인 경우에만 닫기 실행
+	    if (event.target === modalElement) {
+	        closeModal(modalElement, modalTitle, contentBox);
+	    }
+	});
 
     contentBox.prepend(modalTitle);
 
